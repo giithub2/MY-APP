@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .input-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    input[type="text"] {
+      width: 70%;
+      padding: 12px;
+      font-size: 16px;
+      border: 3px solid green;
+      border-radius: 8px;
+      outline: none;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #238636;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #2ea043;
+    }
+  </style>
+</head>
+<body>
+  <div class="input-container">
+    <input type="text" id="urlInput" placeholder="Enter m3u8 link here...">
+    <button onclick="launchPlayer()">Play</button>
+  </div>
+
+  <script>
+    function launchPlayer() {
+      const url = document.getElementById("urlInput").value.trim();
+      if (url === "") {
+        alert("Please enter a video URL");
+        return;
+      }
+      if (!/^https?:\/\//i.test(url)) {
+        alert("Invalid URL. Must start with http:// or https://");
+        return;
+      }
+      // Call your function that talks to Android
+      playInNativePlayer(url);
+    }
+
+    // Your provided function
+    function playInNativePlayer(url) {
+      if (window.AndroidInterface?.playInNativePlayer) {
+        AndroidInterface.playInNativePlayer(url);
+      } else if (window.AndroidInterface?.playM3U8Video) {
+        AndroidInterface.playM3U8Video(url);
+      } else {
+        alert("This feature only works in the Android app.");
+      }
+    }
+  </script>
+</body>
+</html>
