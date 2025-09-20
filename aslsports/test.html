@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Play — WebView → Native Player</title>
+  <style>
+    :root { --bg:#ffffff; --muted:#6b7280; --btn:#111827; --pill:#f3f4f6; --accent:#0b84ff }
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.4;color:var(--btn);background:var(--bg);padding:20px}
+    h1{font-size:20px;margin:0 0 12px}
+    p{margin:0 0 18px;color:var(--muted)}
+    .btn{display:inline-block;padding:10px 14px;margin:6px;border-radius:8px;border:1px solid #e5e7eb;background:var(--pill);cursor:pointer}
+    .btn:active{transform:translateY(1px)}
+    .small{font-size:13px;color:var(--muted);margin-top:6px}
+    .box{background:#fff;border:1px solid #eee;padding:12px;border-radius:10px;max-width:900px}
+    .row{display:flex;gap:8px;flex-wrap:wrap}
+    .field{margin:10px 0}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input,textarea,select{width:100%;padding:8px;border-radius:8px;border:1px solid #e5e7eb;font-size:14px}
+    textarea{min-height:80px;resize:vertical}
+    .muted{color:var(--muted);font-size:13px}
+    pre.payload{background:#f8fafc;padding:10px;border-radius:8px;overflow:auto;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="box" role="main" aria-labelledby="title">
+    <h1 id="title">WebView → Native Player (clean)</h1>
+    <p class="muted">Click a button to send an encoded <code>player://</code> payload to the WebView. The Android app should intercept and open the native player.</p>
+
+    <section aria-label="quick examples">
+      <div class="row" id="examples">
+        <!-- Buttons injected by script -->
+      </div>
+      <p class="small">Examples: ClearKey, Widevine, and HLS (with Referer).</p>
+    </section>
+
+    <hr style="margin:16px 0;border:none;border-top:1px solid #f1f5f9">
+
+    <section aria-label="create custom">
+      <div class="field">
+        <label for="mediaUrl">Media URL</label>
+        <input id="mediaUrl" placeholder="https://cdn.example.com/video.mpd" />
+      </div>
+
+      <div class="field" style="display:flex;gap:8px;flex-wrap:wrap">
+        <div style="flex:1;min-width:160px">
+          <label for="drmScheme">DRM scheme</label>
+          <select id="drmScheme">
+            <option value="">(none)</option>
+            <option value="clearkey">clearkey</option>
+            <option value="widevine">widevine</option>
+          </select>
+        </div>
+        <div style="flex:2;min-width:220px">
+          <label for="drmLicense">DRM license (URL OR KID:KEY for ClearKey)</label>
+          <input id="drmLicense" placeholder="https://license.example/get OR KID:KEY" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="headers">Headers (one per line; format: Header-Name: value)</label>
+        <textarea id="headers" placeholder="Referer: https://example.com&#10;Authorization: Bearer TOKEN"></textarea>
+      </div>
+
+      <div class="row">
+        <button id="makeBtn" class="btn">Create Play Button</button>
+        <button id="playNow" class="btn" title="Play using current form values">Play Now</button>
+      </div>
+
+      <div id="generated" style="margin-top:12px"></div>
+    </section>
+
+    <hr style="margin:16px 0;border:none;border-top:1px solid #f1f5f9">
+
+    <section aria-label="payload">
+      <div class="muted">Decoded payload (for debugging)</div>
+      <pre id="raw" class="payload">—</pre>
+    </section>
+
+    <p class="small" style="margin-top:12px">Host this page via HTTPS. The Android WebView's `shouldOverrideUrlLoading` should intercept links beginning with <code>player://</code>.</p>
+  </div>
+
+  <script>
+    // Build encoded payload: encodeURIComponent(mediaUrl) + '|' + key=encodedVal & ...
+    function buildPayload(mediaUrl, params = {}, headers = {}) {
+      const paramPairs = [];
+      for (const k in params) {
+        if (!params[k]) continue;
+        paramPairs.push(encodeURIComponent(k) + '=' + encodeURIComponent(params[k]));
+      }
+      for (const h in headers) {
+        if (!headers[h]) continue;
+        paramPairs.push(encodeURIComponent(h) + '=' + encodeURIComponent(headers[h]));
+      }
+      return encodeURIComponent(mediaUrl) + (paramPairs.length ? '|' + paramPairs.join('&') : '');
+    }
+
+    // Navigate to player://payload so WebView can intercept
+    function openInApp(mediaUrl, params = {}, headers = {}) {
+      if (!mediaUrl) return alert('Enter a media URL');
+      const payload = buildPayload(mediaUrl, params, headers);
+      // show decoded payload for debugging
+      try {
+        document.getElementById('raw').textContent = 'player://' + decodeURIComponent(payload);
+      } catch (e) {
+        document.getElementById('raw').textContent = 'player://' + payload;
+      }
+      // Trigger navigation — WebView should intercept this
+      window.location.href = 'player://' + payload;
+    }
+
+    // Quick example buttons
+    const examples = [
+      {
+        label: 'Play ClearKey (example)',
+        media: 'https://cdn.example.com/clearkey/video.mpd',
+        params: { drmScheme: 'clearkey', drmLicense: '0123456789abcdef:fedcba9876543210' },
+        headers: {}
+      },
+      {
+        label: 'Play Widevine (example)',
+        media: 'https://cdn.example.com/widevine/video.mpd',
+        params: { drmScheme: 'widevine', drmLicense: 'https://license.example/rights' },
+        headers: { Authorization: 'Bearer TOKEN123' }
+      },
+      {
+        label: 'Play HLS (with Referer)',
+        media: 'https://cdn.example.com/playlist.m3u8',
+        params: {},
+        headers: { Referer: 'https://example.com' }
+      }
+    ];
+
+    function renderExamples() {
+      const container = document.getElementById('examples');
+      container.innerHTML = '';
+      examples.forEach(ex => {
+        const btn = document.createElement('button');
+        btn.className = 'btn';
+        btn.textContent = ex.label;
+        btn.addEventListener('click', () => openInApp(ex.media, ex.params, ex.headers));
+        container.appendChild(btn);
+      });
+    }
+
+    // Wire up form controls
+    document.getElementById('makeBtn').addEventListener('click', () => {
+      const media = document.getElementById('mediaUrl').value.trim();
+      const drm = document.getElementById('drmScheme').value;
+      const license = document.getElementById('drmLicense').value.trim();
+      const headersText = document.getElementById('headers').value.trim();
+
+      const params = {};
+      if (drm) params.drmScheme = drm;
+      if (license) params.drmLicense = license;
+
+      const headers = {};
+      if (headersText) {
+        headersText.split('\n').forEach(line => {
+          const idx = line.indexOf(':');
+          if (idx > -1) {
+            const key = line.slice(0, idx).trim();
+            const val = line.slice(idx + 1).trim();
+            if (key) headers[key] = val;
+          }
+        });
+      }
+
+      const payload = buildPayload(media, params, headers);
+      const gen = document.getElementById('generated');
+      gen.innerHTML = '';
+      const playBtn = document.createElement('button');
+      playBtn.className = 'btn';
+      playBtn.textContent = 'Play: ' + (media || '(no url)');
+      playBtn.addEventListener('click', () => openInApp(media, params, headers));
+      gen.appendChild(playBtn);
+
+      const pre = document.createElement('pre');
+      pre.className = 'payload';
+      pre.textContent = 'player://' + payload + '\n\n(Encoded payload — app will decode before use)';
+      gen.appendChild(pre);
+    });
+
+    document.getElementById('playNow').addEventListener('click', () => {
+      const media = document.getElementById('mediaUrl').value.trim();
+      const drm = document.getElementById('drmScheme').value;
+      const license = document.getElementById('drmLicense').value.trim();
+      const headersText = document.getElementById('headers').value.trim();
+
+      const params = {};
+      if (drm) params.drmScheme = drm;
+      if (license) params.drmLicense = license;
+
+      const headers = {};
+      if (headersText) {
+        headersText.split('\n').forEach(line => {
+          const idx = line.indexOf(':');
+          if (idx > -1) {
+            const key = line.slice(0, idx).trim();
+            const val = line.slice(idx + 1).trim();
+            if (key) headers[key] = val;
+          }
+        });
+      }
+
+      openInApp(media, params, headers);
+    });
+
+    // Initialize
+    renderExamples();
+  </script>
+</body>
+</html>

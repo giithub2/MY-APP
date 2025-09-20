@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="max-age=0">
+  <meta name="theme-color" content="#308bcf">
+
+  <link rel="icon" type="image/x-icon" href="https://i.ibb.co/SN1HfH0/video.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500|Material+Icons&ver=6.1.1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <title>ASL SPORTS</title>
+
+  <style>
+    @font-face {
+      font-family: 'Muli';
+      font-style: normal;
+      font-weight: 999;
+      src: local('Muli Bold'), local('Muli-Bold'),
+        url(http://fonts.gstatic.com/s/muli/v11/7Au_p_0qiz-adYnjOCX2zw.woff2) format('woff2');
+    }
+
+    body {
+      background: #fff;
+      color: #000;
+      font-family: 'Muli', sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #003c78;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    input[type="text"],
+    input[type="submit"] {
+      padding: 3px;
+      border: 1px solid #cdcdcd;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    input[type="submit"] {
+      background-color: #2288ee;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 1px 1px 0px #003;
+    }
+
+    hr {
+      background-color: #d2d2d2;
+      height: 1px;
+      margin: 2px 0;
+    }
+
+    h1,
+    h2 {
+      text-align: center;
+      padding: 3px;
+      margin: 3px;
+      font-size: 16px;
+    }
+
+    h1 {
+      background: linear-gradient(to right, #FF9372 0%, #FFF0A8 50%, #F9FFB5 100%);
+      color: #000;
+    }
+
+    h2 {
+      background: linear-gradient(to bottom, #FFF7AD 0%, #FAFFA8 50%, #FBFFCE 100%);
+      color: #000;
+    }
+
+    .logo {
+      text-align: center;
+      background: linear-gradient(to right, yellow 0%, pink 100%);
+      font-size: 12px;
+    }
+
+    .end {
+      background: linear-gradient(to right, orange 0%, orange 100%);
+      text-align: center;
+      margin-top: 1px;
+      padding: 8px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    #app {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 5px;
+      justify-items: center;
+      padding: 5px;
+    }
+
+    .c {
+      width: 100%;
+      max-width: 98%;
+      background: rgba(70, 130, 180, 0.1);
+      border-radius: 7px;
+      text-align: center;
+      padding: 5px;
+    }
+
+    .c a {
+      display: inline-block;
+      background: #000;
+      padding: 5px 7px;
+      color: #fff;
+      border-radius: 20px;
+      font-size: 12px;
+      transition: 0.4s;
+      text-decoration: none;
+    }
+
+    .c a:hover {
+      background: rgba(70, 130, 180, 0.3);
+    }
+
+    .c img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .caption {
+      padding: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .caption.clicked {
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Section -->
+  <div class="end">
+    <a href="https://livecricket_abot">
+      <img src="https://i.ibb.co/j5725R9/Picsart-25-01-20-07-49-20-437.png" width="100%" height="7%">
+    </a>
+  </div>
+
+  <div class="logo">
+    <a href="https://t.me/LIVECRICKET_ABOT">JOIN TELEGRAM NOW {ASL SPORTS}</a>
+  </div>
+
+  <!-- Main Content -->
+  <main id="app"></main>
+
+  <!-- Footer -->
+  <div class="end">
+    © Copyright 2025 ASL SPORTS<br>
+    <a href="/">DISCLAIMER</a>
+  </div>
+
+  <script>
+    function getData() {
+      fetch("https://raw.githubusercontent.com/drmlive/fancode-live-events/main/fancode.json")
+        .then(res => res.json())
+        .then(json => {
+          const html = json.matches.map(function (item) {
+            const isLive = item.status.toLowerCase() === 'live';
+            const isUpcoming = item.status.toLowerCase() === 'upcoming';
+            return `<div class='c'>
+                    <a href='${item.adfree_url}' onclick="playInNativePlayer(this.href); return false;">
+                      <img src='${item.src}' alt='${item.event_name || "Event Image"}'></img><br>
+                      <strong class="caption" onclick="changeColor(this)">${item.event_name}</strong><br>
+                      ${item.match_name}<br>
+                      ${item.startTime}<br>
+                      <button>${item.event_category}</button>
+                      <button style="
+                        background-color: ${isLive ? 'red' : isUpcoming ? 'yellow' : 'initial'};
+                        color: ${isLive ? 'white' : isUpcoming ? 'black' : 'initial'};
+                      ">${item.status}</button>
+                    </a>
+                  </div>`;
+          }).join("");
+
+          document.querySelector("#app").innerHTML = html;
+        })
+        .catch(error => {
+          console.error(error);
+          document.querySelector("#app").innerHTML = "<p>Error loading data. Please try again later.</p>";
+        });
+    }
+
+    function changeColor(element) {
+      element.classList.toggle('clicked');
+    }
+
+    function playInNativePlayer(url) {
+      if (window.AndroidInterface && typeof window.AndroidInterface.playInNativePlayer === "function") {
+        window.AndroidInterface.playInNativePlayer(url);
+      } else {
+        alert("Native player not available.");
+      }
+    }
+
+    getData();
+  </script>
+
+  
+<script>
+    function playInNativePlayer(m3u8Url) {
+        if (window.AndroidInterface) {
+            window.AndroidInterface.playM3U8Video(m3u8Url);
+        } else {
+            alert("This feature is only available in the app.");
+        }
+    }
+</script>
+</body>
+
+  </html>

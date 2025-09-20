@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Probo Welcome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533483);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite, zoomBG 10s ease-in-out infinite;
+      color: white;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes zoomBG {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .container {
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 20px;
+      animation: fadeSlideDown 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeSlideDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .typing {
+      font-size: 2.7em;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: .15em solid #fff;
+      width: 0;
+      margin: 0 auto;
+      animation: typing 2s steps(40, end) forwards, blinkCursor .75s step-end infinite;
+      text-shadow: 0 0 10px #ffffff88, 0 0 20px #00adb5;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blinkCursor {
+      50% { border-color: transparent; }
+    }
+
+    .subtitle {
+      margin-top: 25px;
+      font-size: 1.4em;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.75s ease-in-out forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .button {
+      margin-top: 30px;
+      padding: 14px 30px;
+      font-size: 1.05em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.75s ease forwards;
+      color: white;
+      font-weight: 700;
+    }
+
+    .button:nth-of-type(1) {
+      background: #ff5722;
+      animation: blink1 1.2s infinite alternate, fadeUp 0.75s ease forwards;
+      animation-delay: 1.25s;
+    }
+
+    .button:nth-of-type(2) {
+      background: #00adb5;
+      animation: blink2 1.2s infinite alternate, fadeUp 0.75s ease forwards;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes blink1 {
+      from { box-shadow: 0 0 5px #ff5722; }
+      to { box-shadow: 0 0 20px #ff5722; }
+    }
+
+    @keyframes blink2 {
+      from { box-shadow: 0 0 5px #00adb5; }
+      to { box-shadow: 0 0 20px #00adb5; }
+    }
+
+    .button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="https://i.ibb.co/YTQbM0Xs/Picsart-25-04-24-19-57-54-645.png" alt="Logo" class="logo" />
+    <div class="typing">Welcome</div>
+    <div class="subtitle">To ASL SPORTS | Cricket Destination</div>
+    <button class="button" onclick="continueToApp()">Enter [Click Here]</button><br>
+  </div>
+
+  <script>
+    function continueToApp() {
+      window.location.href = 'home.html';
+    }
+  </script>
+
+  <iframe src="toggle.html" style="display:none;" width="0" height="0"></iframe>
+
+</body>
+</html>

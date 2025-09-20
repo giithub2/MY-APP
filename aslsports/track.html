@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - User Visits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .dashboard {
+            max-width: 1000px;
+            margin: auto;
+        }
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .stat-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            flex: 1;
+            text-align: center;
+            min-width: 150px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>User Visits Dashboard</h1>
+        <div class="stats">
+            <div class="stat-box">
+                <h3>Today's Total Visits</h3>
+                <p id="todayTotal">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>Unique Visits Today</h3>
+                <p id="todayUnique">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>Yesterday's Total Visits</h3>
+                <p id="yesterdayTotal">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>This Week's Total Visits</h3>
+                <p id="weekTotal">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>This Month's Total Visits</h3>
+                <p id="monthTotal">0</p>
+            </div>
+            <div class="stat-box">
+                <h3>All-Time Total Visits</h3>
+                <p id="allTimeTotal">0</p>
+            </div>
+        </div>
+        <h2>Recent Visits</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Page</th>
+                    <th>User Agent</th>
+                    <th>IP Address</th>
+                </tr>
+            </thead>
+            <tbody id="visitsTable"></tbody>
+        </table>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js"></script>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAwXxjg1O02poDvcqlbuD3VKff2FcBKa5E",
+            authDomain: "aslsportsapp.firebaseapp.com",
+            projectId: "aslsportsapp",
+            storageBucket: "aslsportsapp.firebasestorage.app",
+            messagingSenderId: "118186228231",
+            appId: "1:118186228231:android:97a84336344b9a469b88a2"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const visitsRef = db.ref('visits');
+
+        // Get date ranges
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const yesterday = new Date(today);
+        yesterday.setDate(today.getDate() - 1);
+        const weekStart = new Date(today);
+        weekStart.setDate(today.getDate() - today.getDay()); // Start of current week (Sunday)
+        const monthStart = new Date(today.getFullYear(), now.getMonth(), 1);
+
+        // Convert dates to timestamps (milliseconds since epoch)
+        const todayStart = today.getTime();
+        const yesterdayStart = yesterday.getTime();
+        const yesterdayEnd = todayStart - 1;
+        const weekStartTs = weekStart.getTime();
+        const monthStartTs = monthStart.getTime();
+
+        // Function to format timestamp to YYYY-MM-DD HH:MM:SS
+        function formatTimestamp(timestamp) {
+            const date = new Date(timestamp);
+            return date.toLocaleString('en-US', {
+                year: 'numeric', month: '2-digit', day: '2-digit',
+                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+            });
+        }
+
+        // Load and display visit data
+        visitsRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            let todayTotal = 0;
+            let yesterdayTotal = 0;
+            let weekTotal = 0;
+            let monthTotal = 0;
+            let allTimeTotal = 0;
+            const todayUsers = new Set();
+            let tableContent = '';
+
+            if (data) {
+                Object.values(data).forEach(visit => {
+                    const visitTime = visit.timestamp;
+                    allTimeTotal++;
+
+                    if (visitTime >= todayスタート && visitTime < todayStart + 86400000) {
+                        todayTotal++;
+                        todayUsers.add(visit.userId);
+                    }
+                    if (visitTime >= yesterdayStart && visitTime < yesterdayEnd) {
+                        yesterdayTotal++;
+                    }
+                    if (visitTime >= weekStartTs) {
+                        weekTotal++;
+                    }
+                    if (visitTime >= monthStartTs) {
+                        monthTotal++;
+                    }
+
+                    tableContent += `
+                        <tr>
+                            <td>${formatTimestamp(visit.timestamp)}</td>
+                            <td>${visit.page}</td>
+                            <td>${visit.userAgent}</td>
+                            <td>${visit.ip || 'N/A'}</td>
+                        </tr>`;
+                });
+            }
+
+            document.getElementById('todayTotal').textContent = todayTotal;
+            document.getElementById('todayUnique').textContent = todayUsers.size;
+            document.getElementById('yesterdayTotal').textContent = yesterdayTotal;
+            document.getElementById('weekTotal').textContent = weekTotal;
+            document.getElementById('monthTotal').textContent = monthTotal;
+            document.getElementById('allTimeTotal').textContent = allTimeTotal;
+            document.getElementById('visitsTable').innerHTML = tableContent;
+        }, (error) => {
+            console.error('Error fetching data:', error);
+        });
+    </script>
+</body>
+</html>

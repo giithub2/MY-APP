@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Star Hindi - @allinonereborn</title>
+<link rel="icon"
+href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png"
+type="image/png" sizes="250x250">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Shaka Player -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/shaka-player.ui.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/controls.min.css" crossorigin="anonymous" />
+
+<style>
+body {
+margin: 0;
+background-color: black;
+}
+
+/* Overflow menu style */
+.shaka-overflow-menu {
+background-color: rgb(41, 41, 163);
+color: rgb(153, 153, 153);
+}
+
+.shaka-overflow-menu button:hover {
+background-color: rgb(45, 45, 45);
+}
+
+.shaka-overflow-button-label {
+color: rgb(245, 245, 245);
+}
+
+.shaka-current-selection-span {
+color: rgb(202, 202, 202);
+}
+
+.material-icons-round {
+color: rgb(230, 230, 230);
+}
+
+/* Overflow sub menu style */
+.shaka-settings-menu {
+background-color: rgb(35, 35, 35);
+color: rgb(255, 255, 255);
+}
+
+.shaka-settings-menu button {
+color: rgb(255, 255, 255);
+}
+
+.shaka-settings-menu button:hover {
+background-color: rgb(45, 45, 45);
+}
+</style>
+</head>
+
+<body>
+<div data-shaka-player-container style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+<video autoplay muted data-shaka-player id="video" poster="https://te.legra.ph/file/0fd95c4c791b8b38add61.jpg"
+style="width:100%;height:100%"></video>
+</div>
+
+<script>
+async function init() {
+let video = document.getElementById("video");
+let ui = video.ui;
+let controls = ui.getControls();
+let player = controls.getPlayer();
+
+player.configure({
+drm: {
+clearKeys: {
+"ae26845bd33038a9c0774a0981007294": "63ac662dde310cfb4cc6f9b43b34196d"
+}
+}
+});
+
+ui.configure({
+controlPanelElements: [
+"play_pause",
+"mute",
+"volume",
+"time_and_duration",
+"spacer",
+"rewind",
+"fast_forward",
+"quality",
+"fullscreen",
+"overflow_menu"
+],
+volumeBarColors: {
+base: 'rgba(63, 187, 1, 1)',
+level: 'rgb(255, 69, 0)',
+},
+seekBarColors: {
+base: 'rgb(41, 41, 163)',
+buffered: 'rgb(35, 99, 3)',
+played: 'rgba(63, 187, 1, 1)',
+}
+});
+
+window.player = player;
+window.ui = ui;
+
+player.addEventListener("error", onPlayerErrorEvent);
+controls.addEventListener("error", onUIErrorEvent);
+
+try {
+await player.load("https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/wf8usag51e/out/v1/bd3b0c314fff4bb1ab4693358f3cd2d3/cenc.mpd");
+console.log("The video has now been loaded!");
+} catch (error) {
+onPlayerError(error);
+}
+}
+
+function onPlayerErrorEvent(event) {
+onPlayerError(event.detail);
+}
+
+function onPlayerError(error) {
+console.error("Error code", error.code, "object", error);
+}
+
+function onUIErrorEvent(event) {
+onPlayerError(event.detail);
+}
+
+function initFailed(error) {
+console.error("Unable to load the UI library!");
+}
+
+document.addEventListener("shaka-ui-loaded", init);
+document.addEventListener("shaka-ui-load-failed", initFailed);
+</script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Auto Popup Banner</title>
+  <style>
+    /* Overlay background with glassmorphism */
+    #uniqueOverlayBanner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: overlayFadeIn 0.5s ease;
+    }
+
+    /* Popup card with advanced styling */
+    .uniquePopupCard {
+      position: relative;
+      background: linear-gradient(145deg, #ffffff, #f5f7fa);
+      width: 450px;
+      max-width: 90%;
+      padding: 0;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 
+        0 20px 40px rgba(0,0,0,0.15),
+        0 0 0 1px rgba(255,255,255,0.1);
+      animation: popupSlideIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+
+    .uniquePopupCard::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+      background-size: 400% 400%;
+      animation: gradientShift 3s ease infinite;
+      z-index: -1;
+      border-radius: 25px;
+    }
+
+    /* Image container with live indicator */
+    .uniqueImageContainer {
+      position: relative;
+      margin-bottom: 0;
+    }
+
+    .uniquePopupImage {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Live Now blinking button - bottom right */
+    .uniqueLiveIndicator {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background: linear-gradient(45deg, #ff0844, #ff4757);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 
+        0 4px 15px rgba(255, 8, 68, 0.4),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+      animation: liveBlinking 1.5s ease-in-out infinite;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+
+    .uniqueLiveIndicator::before {
+      content: '●';
+      margin-right: 6px;
+      animation: liveDot 1s ease-in-out infinite;
+    }
+
+    /* Content section inside popup */
+    .uniquePopupContent {
+      padding: 12px 15px;
+      background: rgba(255,255,255,0.95);
+    }
+
+    /* Base button style */
+    .uniqueShareBtn {
+      display: inline-block;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 5px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+      letter-spacing: 1px;
+    }
+
+    /* WhatsApp Share button */
+    #uniqueWhatsappShare {
+      background: linear-gradient(45deg, #25D366, #20c997);
+      box-shadow: 
+        0 10px 25px rgba(37, 211, 102, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    #uniqueWhatsappShare:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 
+        0 15px 35px rgba(37, 211, 102, 0.4),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    /* Watch Live button */
+    .watchLiveBtn {
+      background: linear-gradient(45deg, #ff0844, #ff4757);
+      box-shadow: 
+        0 10px 25px rgba(255, 71, 87, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    .watchLiveBtn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 
+        0 15px 35px rgba(255, 71, 87, 0.5),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    /* Animations */
+    @keyframes overlayFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes popupSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @keyframes liveBlinking {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+
+    @keyframes liveDot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .uniquePopupCard { 
+        width: 95%; 
+        margin: 20px; 
+      }
+      .uniquePopupImage {
+        height: 180px;
+      }
+      .uniqueShareBtn { 
+        padding: 10px 20px; 
+        font-size: 14px; 
+      }
+    }
+
+    @media (min-width: 768px) {
+      .uniquePopupCard {
+        width: 500px;
+      }
+      .uniquePopupImage {
+        height: 250px;
+      }
+    }
+
+    /* Main content (always visible) */
+    #mainContent {
+      padding: 20px;
+      text-align: center;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Popup overlay -->
+  <div id="uniqueOverlayBanner">
+    <div class="uniquePopupCard">
+      <div class="uniqueImageContainer">
+        <img src="https://i.ibb.co/5XtFh3Dh/IMG-20250919-063115-517.jpg" 
+             alt="Live Match" 
+             class="uniquePopupImage">
+        <div class="uniqueLiveIndicator">Live Now</div>
+      </div>
+      <div class="uniquePopupContent">
+        <a id="uniqueWhatsappShare" 
+           class="uniqueShareBtn" 
+           target="_blank">
+           1 Share to Unlock🔓& Watch
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const REDIRECT_URL = "/aslsports/home.html";
+    let popupExpireTime = null;
+
+    const SCHEDULE = {
+      startTime: { hour: 19, minute: 0 },   // 10:01 AM
+      endTime: { hour: 23, minute: 30 }    // 11:30 PM
+    };
+
+    function getCurrentTime() {
+      return new Date();
+    }
+
+    function isWithinScheduledTime() {
+      const now = getCurrentTime();
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      const startMinutes = SCHEDULE.startTime.hour * 60 + SCHEDULE.startTime.minute;
+      const endMinutes = SCHEDULE.endTime.hour * 60 + SCHEDULE.endTime.minute;
+      return currentMinutes >= startMinutes && currentMinutes <= endMinutes;
+    }
+
+    function getPopupExpireTime() {
+      return parseInt(localStorage.getItem("popupExpireTime") || "0", 10);
+    }
+
+    function setPopupExpireTime(hours = 3) {
+      const expire = Date.now() + hours * 60 * 60 * 1000;
+      localStorage.setItem("popupExpireTime", expire);
+      popupExpireTime = expire;
+    }
+
+    function showUniquePopup() {
+      document.getElementById("uniqueOverlayBanner").style.display = "flex";
+
+      let text = encodeURIComponent("*🏏•Live Asia Cup - 2025* \n*🇧🇩 BAN vs SL 🇱🇰* \n\n*🔗 Watch Now* : https://live-criicket.blogspot.com/");
+      let shareBtn = document.getElementById("uniqueWhatsappShare");
+      let shareUrl = "https://wa.me/?text=" + text;
+      shareBtn.href = shareUrl;
+
+      shareBtn.onclick = function(e) {
+        e.preventDefault();
+        window.open(shareUrl, "_blank");
+        setPopupExpireTime(3); // save expire for 3 hours
+        shareBtn.innerText = "Not Done❌, Share Properly";
+
+        // After 9 seconds → hide Share & show Watch Live
+        setTimeout(() => {
+          shareBtn.style.display = "none";
+
+          let watchBtn = document.createElement("a");
+          watchBtn.innerText = "▶ Watch Live";
+          watchBtn.className = "uniqueShareBtn watchLiveBtn";
+          watchBtn.href = REDIRECT_URL;
+          watchBtn.onclick = function(e) {
+            e.preventDefault();
+            window.location.href = REDIRECT_URL;
+          };
+
+          document.querySelector(".uniquePopupContent").appendChild(watchBtn);
+        }, 9000);
+      };
+    }
+
+    function initPopupLogic() {
+      popupExpireTime = getPopupExpireTime();
+      const now = Date.now();
+
+      if (!isWithinScheduledTime()) {
+        window.location.href = REDIRECT_URL;
+        return;
+      }
+
+      if (popupExpireTime && now < popupExpireTime) {
+        window.location.href = REDIRECT_URL;
+        return;
+      }
+
+      setTimeout(showUniquePopup, 1000);
+    }
+
+    window.onload = initPopupLogic;
+  </script>
+</body>
+</html>
