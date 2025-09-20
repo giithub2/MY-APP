@@ -1,0 +1,216 @@
+<!----buttons.js-------->
+<script src="/aslsports/buttons.js"></script><!------>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FREE DISH</title>
+  <link rel="icon" href="https://i.ibb.co/SN1HfH0/video.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family:'Poppins',sans-serif; margin:0; background:linear-gradient(to right,red,black,green); }
+    .logo { background:linear-gradient(to right,green, black, red); color:#fff; text-align:center; font-size:24px; padding:15px; font-weight:700; }
+    #search { width:90%; margin:15px auto; display:block; padding:10px; font-size:16px; border-radius:25px; border:1px solid #ccc; }
+    #app { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:15px; padding:20px; max-width:1200px; margin:auto; }
+    .card { background:#fff; border-radius:12px; padding:5px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,.1); transition:.3s; }
+    .card:hover { transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,.15); }
+    .card img { width:100%; height:220px; object-fit:cover; border-radius:8px; margin-bottom:10px; }
+    .card h4 { font-size:15px; margin:0; color:#333; }
+    .empty { text-align:center; color:#666; padding:30px 10px; }
+    .card a {text-decoration: none;}
+  </style>
+</head>
+<body>
+  <div class="logo">🍿 Latest Movies 📡</div>
+
+  <input type="text" id="search" placeholder="🔍 Search Movies..." onkeyup="searchChannels()" />
+
+  <main id="app">Loading channels...</main>
+
+  <script>
+    // 👉 Your M3U URL
+    const m3uUrl = "https://raw.githubusercontent.com/bandridugu6-ship-it/apk/refs/heads/main/z.m3u";
+
+    // Global store for search/index lookup
+    window.allChannels = [];
+
+    async function fetchM3U() {
+      try {
+        const res = await fetch(m3uUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error("Failed to fetch M3U");
+        const text = await res.text();
+        const channels = parseM3U(text);
+        renderChannels(channels);
+      } catch (err) {
+        console.error(err);
+        document.getElementById("app").innerHTML = `<div class="empty">Failed to load playlist.</div>`;
+      }
+    }
+
+    // Parses EXTINF + optional EXTHTTP + KODIPROP blocks until the next URL
+    function parseM3U(text) {
+      const lines = text.split(/\r?\n/);
+      const channels = [];
+      let temp = null;
+
+      for (let i = 0; i < lines.length; i++) {
+        const raw = lines[i];
+        const line = raw ? raw.trim() : "";
+        if (!line) continue;
+
+        if (line.startsWith("#EXTINF")) {
+          temp = {
+            name: "Unknown Channel",
+            logo: "https://i.ibb.co/SN1HfH0/video.png",
+            group: "Other",
+            groupLogo: null,
+            headers: {},
+            drm: {}
+          };
+
+          const nameMatch = line.match(/,(.*)/);
+          const logoMatch = line.match(/tvg-logo="(.*?)"/);
+          const groupMatch = line.match(/group-title="(.*?)"/);
+          const groupLogoMatch = line.match(/group-logo="(.*?)"/);
+
+          if (nameMatch) temp.name = nameMatch[1].trim();
+          if (logoMatch) temp.logo = logoMatch[1];
+          if (groupMatch) temp.group = groupMatch[1];
+          if (groupLogoMatch) temp.groupLogo = groupLogoMatch[1];
+          continue;
+        }
+
+        if (!temp) continue; // ignore lines until an EXTINF block starts
+
+        // #EXTHTTP:{"User-agent":"..."}
+        if (line.startsWith("#EXTHTTP:")) {
+          const jsonStr = line.substring("#EXTHTTP:".length).trim();
+          try {
+            const parsed = JSON.parse(jsonStr);
+            if (parsed && typeof parsed === "object") {
+              temp.headers = parsed;
+            }
+          } catch (e) {
+            console.warn("Failed to parse #EXTHTTP JSON", e);
+          }
+          continue;
+        }
+
+        // #KODIPROP:key=value (e.g., inputstream.adaptive.license_key=...JSON...)
+        if (line.startsWith("#KODIPROP:")) {
+          const kv = line.substring("#KODIPROP:".length);
+          const eq = kv.indexOf("=");
+          if (eq > -1) {
+            const key = kv.substring(0, eq).trim();
+            const val = kv.substring(eq + 1).trim();
+            if (key.includes("license_key")) {
+              // license_key may be JSON or a raw string
+              try {
+                temp.drm.licenseKey = JSON.parse(val);
+              } catch {
+                temp.drm.licenseKey = val;
+              }
+            } else {
+              // store all other KODIPROP values directly
+              temp.drm[key] = val;
+            }
+          }
+          continue;
+        }
+
+        // First plain URL after metadata lines = the stream URL
+        if (/^https?:\/\//i.test(line)) {
+          temp.url = line;
+          channels.push({ ...temp });
+          temp = null; // reset for next entry
+          continue;
+        }
+      }
+
+      return channels;
+    }
+
+    function renderChannels(channels) {
+      const app = document.getElementById("app");
+      app.innerHTML = "";
+
+      if (!channels.length) {
+        app.innerHTML = `<div class="empty">No channels found.</div>`;
+        window.allChannels = [];
+        return;
+      }
+
+      window.allChannels = channels;
+
+      channels.forEach((c, i) => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <a href="${c.url}" onclick="playInNativePlayerIndex(${i}); return false;">
+            <img src="${c.logo}" alt="${escapeHtml(c.name)}" loading="lazy">
+            <h4>${escapeHtml(c.name)}</h4>
+          </a>
+        `;
+        app.appendChild(div);
+      });
+    }
+
+    // Exposed function used by the inline onclick (passes index, not the object)
+    window.playInNativePlayerIndex = function(i) {
+      const channel = window.allChannels[i];
+      if (!channel) return;
+      playInNativePlayer(channel);
+    };
+
+    // Pass URL + headers + DRM to Android; keep browser fallback via anchor href
+    function playInNativePlayer(channel) {
+      try {
+        if (window.AndroidInterface?.playInNativePlayer) {
+          // Signature: playInNativePlayer(url, headersJson, drmJson)
+          window.AndroidInterface.playInNativePlayer(
+            channel.url,
+            JSON.stringify(channel.headers || {}),
+            JSON.stringify(channel.drm || {})
+          );
+        } else if (window.AndroidInterface?.playM3U8Video) {
+          // Older bridge fallback with only URL
+          window.AndroidInterface.playM3U8Video(channel.url);
+        } else {
+          // Running in normal browser
+          alert("This feature is only available inside the app.");
+          // As a fallback, continue with the anchor’s href default navigation if user clicks again.
+        }
+      } catch (e) {
+        console.error("AndroidInterface error:", e);
+        alert("Unable to open in native player.");
+      }
+    }
+
+    function searchChannels() {
+      const keyword = document.getElementById("search").value.toLowerCase().trim();
+      if (!keyword) return renderChannels(window.allChannels);
+
+      const filtered = window.allChannels.filter(c =>
+        (c.name || "").toLowerCase().includes(keyword) ||
+        (c.group || "").toLowerCase().includes(keyword)
+      );
+      renderChannels(filtered);
+    }
+
+    // Tiny HTML escaper for names
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    fetchM3U();
+  </script>
+</body>
+</html>
