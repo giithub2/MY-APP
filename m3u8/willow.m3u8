@@ -1,0 +1,11 @@
+#EXTM3U
+#EXT-X-VERSION:3
+
+#EXT-X-STREAM-INF:BANDWIDTH=3000000
+https://d7.merichunidya.com:1686/hls/willowusa.m3u8?md5=4TK1ktq34gORX4xdxzwnpw&expires=1756997185
+
+#EXT-X-STREAM-INF:BANDWIDTH=2800000
+http://cool365.xyz:900/live/4160189881/DB4ACD54/401242182.m3u8
+
+#EXT-X-STREAM-INF:BANDWIDTH=2400000
+http://31.220.3.103:2095/play/live.php?mac=00:1A:79:80:09:03&stream=297523&extension=m3u8
