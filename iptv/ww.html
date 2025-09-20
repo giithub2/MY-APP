@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Airtel TV 📡</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, #f7f7f7, #e3f2fd);
+  }
+  .logo {
+    background: linear-gradient(to right, #ff4081, green);
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    padding: 15px;
+    font-weight: 700;
+  }
+  #search {
+    width: 90%;
+    margin: 15px auto 5px auto;
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+  }
+  .note-banner {
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(to right, #ff9800, #f44336);
+    color: white;
+    font-weight: 600;
+    padding: 8px 0;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .note-banner span {
+    display: inline-block;
+    padding-left: 100%;
+    white-space: nowrap;
+    animation: scroll-left 18s linear infinite;
+    font-size: 15px;
+  }
+  @keyframes scroll-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  #app {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  .card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .card h4 {
+    font-size: 15px;
+    margin: 0;
+    color: #333;
+  }
+  .card a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #555;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 30px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="logo"> 🌎 World Wide 📡</div>
+  <input type="text" id="search" placeholder="🔍 Search channels..." onkeyup="searchChannels()">
+  
+  <!-- ✅ Moving note banner -->
+  <div class="note-banner">
+    <span>⚠️ Note: All channels might not work, don't get disappointed — we update the channels from time to time. ⚠️</span>
+  </div>
+
+  <main id="app">Loading channels...</main>
+
+  <script>
+    const m3uUrls = [
+      "https://raw.githubusercontent.com/Cobra4x2/My-Stuff/refs/heads/main/DaddyLive-nightah.m3u",
+      "https://raw.githubusercontent.com/FunctionError/PiratesTv/main/combined_playlist.m3u"
+    ];
+
+    async function fetchM3U(url) {
+      try {
+        const text = await (await fetch(url)).text();
+        const lines = text.split('\n');
+        const channels = [];
+
+        for (let i = 0; i < lines.length; i++) {
+          const ln = lines[i].trim();
+          if (!ln.startsWith('#EXTINF')) continue;
+
+          const nameMatch = ln.match(/,(.*)$/);
+          const logoMatch = ln.match(/tvg-logo="([^"]+)"/);
+          const name = nameMatch ? nameMatch[1].trim() : "Unknown Channel";
+          const logo = logoMatch ? logoMatch[1] : "https://i.ibb.co/SN1HfH0/video.png";
+
+          let url = "";
+          for (let j = i + 1; j < lines.length; j++) {
+            const l2 = lines[j].trim();
+            if (l2.startsWith('http')) {
+              url = l2;
+              break;
+            }
+          }
+
+          if (url) {
+            channels.push({ name, logo, url });
+          }
+        }
+
+        return channels;
+      } catch (e) {
+        console.error("Failed to fetch", url, e);
+        return [];
+      }
+    }
+
+    async function loadPlaylists() {
+      document.getElementById("app").innerHTML = "⏳ Loading playlists...";
+      let all = [];
+      for (const url of m3uUrls) {
+        const channels = await fetchM3U(url);
+        all = all.concat(channels);
+      }
+      // ✅ remove duplicate channels by name+url
+      const seen = new Set();
+      const unique = all.filter(c => {
+        const key = c.name + "|" + c.url;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+
+      window.allChannels = unique;
+      renderChannels(unique);
+    }
+
+    function renderChannels(channels) {
+      const app = document.getElementById("app");
+      app.innerHTML = "";
+
+      if (!channels.length) {
+        app.innerHTML = `<div class="no-results">😢 No results found</div>`;
+        return;
+      }
+
+      channels.forEach(c => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <a href="${c.url}" onclick="playInNativePlayer('${c.url}'); return false;">
+            <img src="${c.logo}" alt="${c.name}">
+            <h4>${c.name}</h4>
+          </a>
+        `;
+        app.appendChild(div);
+      });
+    }
+
+    function playInNativePlayer(url) {
+      if (window.AndroidInterface?.playInNativePlayer) {
+        AndroidInterface.playInNativePlayer(url);
+      } else if (window.AndroidInterface?.playM3U8Video) {
+        AndroidInterface.playM3U8Video(url);
+      } else {
+        alert("This feature only works in the Android app.");
+      }
+    }
+
+    function searchChannels() {
+      if (!window.allChannels) return;
+
+      const keyword = document.getElementById("search").value.toLowerCase().trim();
+
+      if (keyword === "") {
+        renderChannels(window.allChannels);
+        return;
+      }
+
+      const filtered = window.allChannels.filter(c =>
+        c.name.toLowerCase().includes(keyword)
+      );
+
+      renderChannels(filtered);
+    }
+
+    loadPlaylists();
+  </script>
+
+</body>
+</html>

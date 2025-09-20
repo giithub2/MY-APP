@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Airtel TV 📡</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, #f7f7f7, #e3f2fd);
+  }
+  .logo {
+    background: linear-gradient(to right, #ff4081, green);
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    padding: 15px;
+    font-weight: 700;
+  }
+  #search {
+    width: 90%;
+    margin: 15px auto;
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+  }
+  #app {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  .card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .card h4 {
+    font-size: 15px;
+    margin: 0;
+    color: #333;
+  }
+  .card a {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>
+</head>
+<body>
+
+  <div class="logo"> ⭐ STAR SPORTS 📡</div>
+  <input type="text" id="search" placeholder="🔍 Search Star Sports..." onkeyup="searchChannels()">
+  <main id="app">Loading channels...</main>
+
+  <script>
+    const m3uUrl = "https://raw.githubusercontent.com/AstroSmarty/JioTv/refs/heads/main/channels.m3u";
+
+    async function fetchM3U() {
+      const text = await (await fetch(m3uUrl)).text();
+      const lines = text.split('\n');
+      const channels = [];
+
+      for (let i = 0; i < lines.length; i++) {
+        const ln = lines[i].trim();
+        if (!ln.startsWith('#EXTINF')) continue;
+
+        const nameMatch = ln.match(/,(.*)$/);
+        const logoMatch = ln.match(/tvg-logo="([^"]+)"/);
+        const name = nameMatch ? nameMatch[1].trim() : "Unknown Channel";
+        const logo = logoMatch ? logoMatch[1] : "https://i.ibb.co/SN1HfH0/video.png";
+
+        let url = "";
+        for (let j = i + 1; j < lines.length; j++) {
+          const l2 = lines[j].trim();
+          if (l2.startsWith('http')) {
+            url = l2;
+            break;
+          }
+        }
+
+        if (url) {
+          channels.push({ name, logo, url });
+        }
+      }
+
+      // ✅ Only Star Sports channels
+      const starSportsChannels = channels.filter(c => c.name.toLowerCase().includes("star sports"));
+
+      renderChannels(starSportsChannels);
+    }
+
+    function renderChannels(channels) {
+      const app = document.getElementById("app");
+      app.innerHTML = "";
+      window.allChannels = channels;
+
+      channels.forEach(c => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <a href="${c.url}" onclick="playInExternalPlayer('${c.url}'); return false;">
+            <img src="${c.logo}" alt="${c.name}">
+            <h4>${c.name}</h4>
+          </a>
+        `;
+        app.appendChild(div);
+      });
+    }
+
+    function playInExternalPlayer(url) {
+      // MX Player intent
+      const mxIntent = `intent:${url}#Intent;package=com.genuine.leone;end`;
+      // VLC intent
+      const vlcIntent = `vlc://${url}`;
+      // NS Player / XPlayer intent
+      const nsIntent = `intent:${url}#Intent;package=video.player.videoplayer;end`;
+
+      if (/Android/i.test(navigator.userAgent)) {
+        // Try MX Player first
+        window.location.href = mxIntent;
+
+        // If not installed, try VLC after 1.5s
+        setTimeout(() => {
+          window.location.href = vlcIntent;
+        }, 1500);
+
+        // If not installed, try NS Player after 3s
+        setTimeout(() => {
+          window.location.href = nsIntent;
+        }, 3000);
+      } else {
+        alert("External player support works only on Android devices.");
+      }
+    }
+
+    function searchChannels() {
+      const keyword = document.getElementById("search").value.toLowerCase();
+      const filtered = window.allChannels.filter(c => c.name.toLowerCase().includes(keyword));
+      renderChannels(filtered);
+    }
+
+    fetchM3U();
+  </script>
+
+</body>
+</html>
