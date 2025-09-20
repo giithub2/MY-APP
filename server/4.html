@@ -1,0 +1,430 @@
+<!----------CricHD 1-----------
+
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            height: 100vh;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <iframe name="123" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen sandbox="allow-scripts allow-same-origin" 
+        src="https://cdn.crichdplays.ru/embed2.php?id=starsp1" title="Video Player"></iframe>
+    </div>
+</body>
+</html>
+
+<!--------->
+
+<!--------CricHD 2------------
+
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            height: 100vh;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <iframe name="123" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen sandbox="allow-scripts allow-same-origin" 
+        src="https://binge-player.pages.dev/p3?id=tsports" title="Video Player"></iframe>
+    </div>
+</body>
+</html>
+
+
+<!------->
+<!-------------Astro Sports----------------->
+
+<!------------mpd player------>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Premier League 2025 - 61st Match - Lucknow Super Giants vs Sunrisers Hyderabad</title>
+    
+    <link rel="icon" href="https://img.willow.tv/apps/wlw-favicon.png" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/shaka-player.compiled.min.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/shaka-player.ui.min.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/controls.min.css" as="style">
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/shaka-player.compiled.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/shaka-player.ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/controls.min.css">
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+        #video-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        .shaka-video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        /* Hide the big play button */
+        .shaka-play-button {
+            display: none !important;
+        }
+        /* Hide any error messages */
+        .shaka-error-display {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container" class="shaka-video-container">
+        <video id="video" autoplay class="shaka-video" preload="auto"></video>
+    </div>
+
+    <script>
+        // Initialize immediately when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preload Shaka modules
+            shaka.polyfill.installAll();
+            
+            // Shaka Player configuration
+            const manifestUri = 'https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash-sd/enc/sqxzntznhn/out/v1/23fd656f4d394fffa1f2fa0bcdb21d70/cenc-sd.mpd';
+            const clearKey = 'a374d4f24f5a101203c2d714adeac805:1a34df7de436868747bd29fab5bc7cbc';
+            
+            // Parse Clear Key format "kid:key" early to save time
+            function parseClearKey(clearKeyString) {
+                if (!clearKeyString) return {};
+                
+                try {
+                    const parts = clearKeyString.split(':');
+                    if (parts.length === 2) {
+                        const keyObj = {};
+                        keyObj[parts[0]] = parts[1];
+                        return keyObj;
+                    }
+                } catch (e) {
+                    console.error('Error parsing clear key:', e);
+                }
+                
+                return {};
+            }
+            
+            // Parse key in advance
+            const parsedKey = parseClearKey(clearKey);
+            
+            // Network quality monitoring
+            const networkQuality = {
+                measurements: [],
+                currentBandwidth: 3000000, // Initial estimate: 3 Mbps
+                
+                addMeasurement: function(bandwidth) {
+                    this.measurements.push(bandwidth);
+                    if (this.measurements.length > 10) {
+                        this.measurements.shift();
+                    }
+                    
+                    this.currentBandwidth = this.measurements.reduce((sum, val) => sum + val, 0) / 
+                                            this.measurements.length;
+                                            
+                    return this.currentBandwidth;
+                },
+                
+                getEstimatedBandwidth: function() {
+                    return this.currentBandwidth;
+                }
+            };
+            
+            // Initialize player
+            async function initPlayer() {
+                if (!shaka.Player.isBrowserSupported()) {
+                    console.error('Browser not supported for Shaka Player!');
+                    return;
+                }
+                
+                // Get DOM elements
+                const video = document.getElementById('video');
+                const videoContainer = document.getElementById('video-container');
+                
+                // Create a Player instance
+                const player = new shaka.Player();
+                await player.attach(video);
+                
+                // Listen for errors
+                player.addEventListener('error', onErrorEvent);
+                
+                // Configure player for optimal streaming
+                player.configure({
+                    streaming: {
+                        bufferingGoal: 15,
+                        rebufferingGoal: 2,
+                        bufferBehind: 40,
+                        safeSeekOffset: 5,
+                        retryParameters: {
+                            maxAttempts: 5,
+                            baseDelay: 500,
+                            backoffFactor: 1.5,
+                            fuzzFactor: 0.5
+                        },
+                        lowLatencyMode: false,
+                        jumpLargeGaps: true,
+                        alwaysStreamText: true,
+                        stallEnabled: true,
+                        stallThreshold: 0.5,
+                        stallSkip: 2.0
+                    },
+                    abr: {
+                        enabled: true,
+                        defaultBandwidthEstimate: 5000000,
+                        switchInterval: 2,
+                        bandwidthDowngradeTarget: 0.90,
+                        bandwidthUpgradeTarget: 0.70,
+                        restrictions: {
+                            minHeight: 360
+                        }
+                    },
+                    manifest: {
+                        retryParameters: {
+                            maxAttempts: 5,
+                            baseDelay: 500,
+                            backoffFactor: 1.5
+                        },
+                        dash: {
+                            ignoreMinBufferTime: true,
+                            defaultPresentationDelay: 3,
+                            ignoreSuggestedPresentationDelay: true,
+                            autoCorrectDrift: true
+                        }
+                    },
+                    drm: {
+                        clearKeys: parsedKey,
+                        retryParameters: {
+                            maxAttempts: 3,
+                            baseDelay: 500,
+                            backoffFactor: 1.5
+                        },
+                        advanced: {
+                            'org.w3.clearkey': {
+                                distinctiveIdentifierRequired: false,
+                                persistentStateRequired: false
+                            }
+                        }
+                    }
+                });
+                
+                try {
+                    // Create UI
+                    const ui = new shaka.ui.Overlay(
+                        player,
+                        videoContainer,
+                        video
+                    );
+                    
+                    // Configure UI - remove play button
+                    ui.configure({
+                        controlPanelElements: [
+                            'play_pause',
+                            'mute',
+                            'volume',
+                            'time_and_duration',
+                            'spacer',
+                            'quality',
+                            'picture_in_picture',
+                            'fullscreen'
+                        ],
+                        addBigPlayButton: false, // Disable big play button
+                        seekBarColors: {
+                            base: 'rgba(255, 255, 255, 0.3)',
+                            buffered: 'rgba(255, 255, 255, 0.6)',
+                            played: 'rgb(255, 0, 0)'
+                        }
+                    });
+                    
+                    // Load the manifest
+                    await player.load(manifestUri, null, 'video/dash');
+                    
+                    // Implement adaptive quality monitoring
+                    let statsMonitorInterval = setInterval(() => {
+                        // Get playback stats
+                        const stats = player.getStats();
+                        
+                        // Update bandwidth estimate
+                        if (stats.estimatedBandwidth) {
+                            networkQuality.addMeasurement(stats.estimatedBandwidth);
+                        }
+                        
+                        // Advanced adaptive bitrate management
+                        const currentBandwidth = networkQuality.getEstimatedBandwidth();
+                        
+                        // If we have good bandwidth and stable playback, optimize quality
+                        if (currentBandwidth > 5000000 && !stats.stalled && stats.playTime > 10) {
+                            const tracks = player.getVariantTracks();
+                            const targetBandwidth = currentBandwidth * 0.75;
+                            let bestTrack = null;
+                            
+                            // Sort tracks by bandwidth (highest first)
+                            const sortedTracks = tracks.sort((a, b) => b.bandwidth - a.bandwidth);
+                            
+                            // Find highest quality track below target bandwidth
+                            for (const track of sortedTracks) {
+                                if (track.bandwidth <= targetBandwidth) {
+                                    bestTrack = track;
+                                    break;
+                                }
+                            }
+                            
+                            // If no suitable track found but we have plenty of bandwidth, pick the highest
+                            if (!bestTrack && sortedTracks.length > 0 && currentBandwidth > 10000000) {
+                                bestTrack = sortedTracks[0]; // Highest quality track
+                            } else if (!bestTrack && sortedTracks.length > 0) {
+                                // Otherwise pick something in the upper middle range
+                                const index = Math.floor(sortedTracks.length * 0.3);
+                                bestTrack = sortedTracks[index];
+                            }
+                            
+                            // Select the track if we found one
+                            if (bestTrack && player.getVariantTracks().find(t => t.active)?.id !== bestTrack.id) {
+                                player.selectVariantTrack(bestTrack);
+                            }
+                        }
+                    }, 2000);
+                    
+                    // Clean up on unload
+                    window.addEventListener('beforeunload', () => {
+                        clearInterval(statsMonitorInterval);
+                        player.unload();
+                    });
+                    
+                    // Force play
+                    try {
+                        await video.play();
+                    } catch (e) {
+                        // Try playing muted
+                        video.muted = true;
+                        video.play();
+                    }
+                    
+                    // Add special handling for live streams
+                    if (player.isLive()) {
+                        video.addEventListener('canplay', () => {
+                            player.seekToLive();
+                        }, { once: true });
+                    }
+                    
+                } catch (error) {
+                    console.error('Error loading player:', error);
+                    onError(error);
+                }
+            }
+            
+            function onErrorEvent(event) {
+                onError(event.detail);
+            }
+            
+            function onError(error) {
+                console.error('Error code', error.code, 'object', error);
+                // Silent error handling - no UI display
+                
+                // Attempt recovery
+                const video = document.getElementById('video');
+                if (video) {
+                    video.muted = true;
+                    setTimeout(() => {
+                        video.load();
+                        video.play();
+                    }, 1000);
+                }
+            }
+            
+            // Initialize player immediately
+            initPlayer();
+            
+            // Add failsafe - try playing after a short delay
+            setTimeout(() => {
+                const video = document.getElementById('video');
+                if (video && video.paused) {
+                    video.muted = true;
+                    video.play();
+                }
+            }, 3000);
+            
+            // Additional failsafe with more aggressive approach
+            setTimeout(() => {
+                const video = document.getElementById('video');
+                if (video && video.paused) {
+                    // Try refreshing player resources
+                    video.muted = true;
+                    video.load();
+                    video.play();
+                }
+            }, 8000);
+            
+            // Make sure we hide any remaining play buttons after DOM manipulation
+            setTimeout(() => {
+                const playButtons = document.querySelectorAll('.shaka-play-button');
+                playButtons.forEach(button => {
+                    button.style.display = 'none';
+                });
+                
+                // Also hide any error displays
+                const errorDisplays = document.querySelectorAll('.shaka-error-display');
+                errorDisplays.forEach(display => {
+                    display.style.display = 'none';
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+
+<!------->
