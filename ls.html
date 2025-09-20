@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Link Shortener</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f8;
+      color: #333;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .link-card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-top: 15px;
+    }
+
+    .link-card a {
+      color: #3498db;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .link-card input {
+      margin-top: 8px;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h2>Smart Link Shortener</h2>
+
+  <input type="text" id="longUrl" placeholder="Paste long URL (e.g. https://example.com)">
+  <button onclick="shorten()">Generate Short Link</button>
+
+  <div id="links"></div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB5EbveecDKiP5-tgBnp23VckQw7vCCt3g",
+      authDomain: "my-link-shortener-3810b.firebaseapp.com",
+      databaseURL: "https://my-link-shortener-3810b-default-rtdb.firebaseio.com",
+      projectId: "my-link-shortener-3810b",
+      storageBucket: "my-link-shortener-3810b.firebasestorage.app",
+      messagingSenderId: "1003530103333",
+      appId: "1:1003530103333:web:1752eaa301ffef2eebedcc",
+      measurementId: "G-Y73GX03B7L"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    function generateId() {
+      return Math.random().toString(36).substr(2, 6);
+    }
+
+    function shorten() {
+      const longUrl = document.getElementById("longUrl").value.trim();
+      if (!longUrl) return alert("Please enter a URL");
+
+      const id = generateId();
+      db.ref("links/" + id).set(longUrl).then(() => {
+        document.getElementById("longUrl").value = "";
+        renderLinks();
+      });
+    }
+
+    function update(id, input) {
+      const newUrl = input.value.trim();
+      if (newUrl === "") return alert("URL cannot be empty.");
+      db.ref("links/" + id).set(newUrl);
+    }
+
+    function renderLinks() {
+      db.ref("links").once("value", snapshot => {
+        const links = snapshot.val();
+        let html = "";
+        for (let id in links) {
+          html += `
+            <div class="link-card">
+              <div><strong>Short URL:</strong> 
+                <a href="?go=${id}" target="_blank">${location.origin + location.pathname}?go=${id}</a>
+              </div>
+              <div><strong>Edit Destination:</strong></div>
+              <input type="text" value="${links[id]}" onchange="update('${id}', this)">
+            </div>
+          `;
+        }
+        document.getElementById("links").innerHTML = html;
+      });
+    }
+
+    function redirectFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const go = params.get("go");
+      if (go) {
+        db.ref("links/" + go).once("value", snap => {
+          const target = snap.val();
+          if (target) window.location.href = target;
+          else document.body.innerHTML = "<h3 class='error'>Short link not found.</h3>";
+        });
+      }
+    }
+
+    renderLinks();
+    redirectFromUrl();
+  </script>
+</body>
+</html>

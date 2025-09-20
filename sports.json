@@ -1,0 +1,61 @@
+[
+    {
+        "name": "Star Sports 1",
+        "id": "star1in",
+        "logo": "https://cdn.jsdelivr.net/gh/HelloPeopleTv4you/tv-logo@refs/heads/main/crichd2-runded/16-by-xfireflix.png",
+        "link": "https://off1.gogohaalmal.com:1686/hls/star1in.m3u8?md5=VhUE1s7CMwCd8jH1SUBaxA&expires=1748249481",
+        "referer": "https://stylisheleg4nt.com",
+        "origin": "https://stylisheleg4nt.com"
+    },
+    
+    {
+        "name": "PTV Sports",
+        "id": "ptvpk",
+        "logo": "https://cdn.jsdelivr.net/gh/HelloPeopleTv4you/tv-logo@refs/heads/main/crichd2-runded/20-by-xfireflix.png",
+        "link": "https://m3.merichunidya.com:999/hls/ptvpk.m3u8?md5=esuJUdpbw7PCF9U46sXZ6g&expires=1748249481",
+        "referer": "https://stylisheleg4nt.com",
+        "origin": "https://stylisheleg4nt.com"
+    },
+    
+    {
+        "name": "Sky Sports Cricket",
+        "id": "skyscric",
+        "logo": "https://cdn.jsdelivr.net/gh/HelloPeopleTv4you/tv-logo@refs/heads/main/crichd2-runded/9-by-xfireflix.png",
+        "link": "https://m3.merichunidya.com:999/hls/skyscric.m3u8?md5=ZYyyP9GSk3zEmUUmwPWQxw&expires=1748249481",
+        "referer": "https://stylisheleg4nt.com",
+        "origin": "https://stylisheleg4nt.com"
+    },
+    
+    {
+        "name": "TNT 1",
+        "id": "bbtsp1",
+        "logo": "https://cdn.jsdelivr.net/gh/HelloPeopleTv4you/tv-logo@refs/heads/main/crichd2-runded/tnt.png",
+        "link": "https://off1.gogohaalmal.com:1686/hls/bbtsp1.m3u8?md5=a8XM2Ui8HNVEfl64x4lBZQ&expires=1748249481",
+        "referer": "https://stylisheleg4nt.com",
+        "origin": "https://stylisheleg4nt.com"
+    },
+    {
+        "name": "TNT 2",
+        "id": "bbtsp2",
+        "logo": "https://cdn.jsdelivr.net/gh/HelloPeopleTv4you/tv-logo@refs/heads/main/crichd2-runded/tnt.png",
+        "link": "https://m1.merichunidya.com:999/hls/bbtsp2.m3u8?md5=Xl55cXF5GC1ZEneGicnqZQ&expires=1748249481",
+        "referer": "https://stylisheleg4nt.com",
+        "origin": "https://stylisheleg4nt.com"
+    },
+    {
+        "name": "TNT 3",
+        "id": "bbtsp3",
+        "logo": "https://cdn.jsdelivr.net/gh/HelloPeopleTv4you/tv-logo@refs/heads/main/crichd2-runded/tnt.png",
+        "link": "https://m3.merichunidya.com:999/hls/bbtsp3.m3u8?md5=4jVDV7PSOcCiof-f_7xbZg&expires=1748249481",
+        "referer": "https://stylisheleg4nt.com",
+        "origin": "https://stylisheleg4nt.com"
+    },
+    {
+        "name": "TNT 4",
+        "id": "bbtespn",
+        "logo": "https://cdn.jsdelivr.net/gh/HelloPeopleTv4you/tv-logo@refs/heads/main/crichd2-runded/tnt.png",
+        "link": "https://off1.gogohaalmal.com:1686/hls/bbtespn.m3u8?md5=zw2T0KTJI4VaSFY0hwBVXw&expires=1748249482",
+        "referer": "https://stylisheleg4nt.com",
+        "origin": "https://stylisheleg4nt.com"
+    }
+]
