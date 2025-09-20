@@ -1,0 +1,182 @@
+[
+  {
+    "date": "22-Aug-2025",
+    "time": "10:00 am",
+    "datetime": "August 22, 2025 10:00:00",
+    "type": "odi",
+    "team1": {
+      "name": "Australia",
+      "logo": "https://i.ibb.co/PZQGJzQ9/download-1.png"
+    },
+    "team2": {
+      "name": "South Africa",
+      "logo": "https://i.ibb.co/n8QtcvBm/download-4.png"
+    },
+    "channels": "willow/star sports 1 hd"
+  },
+  {
+    "date": "22-Aug-2025",
+    "time": "12:00 pm",
+    "datetime": "August 22, 2025 12:00:00",
+    "type": "t20",
+    "team1": {
+      "name": "Romania",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "team2": {
+      "name": "Czech Republic",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "channels": ""
+  },
+  {
+    "date": "22-Aug-2025",
+    "time": "3:30 pm",
+    "datetime": "August 22, 2025 15:30:00",
+    "type": "cwc",
+    "team1": {
+      "name": "Papua New Guinea",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "team2": {
+      "name": "Denmark",
+      "logo": "https://i.ibb.co/0pjqZ9h7/download-7.png"
+    },
+    "channels": ""
+  },
+  {
+    "date": "22-Aug-2025",
+    "time": "4:30 pm",
+    "datetime": "August 22, 2025 16:30:00",
+    "type": "t20",
+    "team1": {
+      "name": "Romania",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "team2": {
+      "name": "Czech Republic",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "channels": ""
+  },
+  {
+    "date": "23-Aug-2025",
+    "time": "1:45 pm",
+    "datetime": "August 23, 2025 13:45:00",
+    "type": "t20",
+    "team1": {
+      "name": "Austria",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "team2": {
+      "name": "Belgium",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "channels": ""
+  },
+  {
+    "date": "23-Aug-2025",
+    "time": "3:30 pm",
+    "datetime": "August 23, 2025 15:30:00",
+    "type": "cwc",
+    "team1": {
+      "name": "Kuwait",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "team2": {
+      "name": "Jersey",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "channels": ""
+  },
+  {
+    "date": "23-Aug-2025",
+    "time": "6:15 pm",
+    "datetime": "August 23, 2025 18:15:00",
+    "type": "t20",
+    "team1": {
+      "name": "Austria",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "team2": {
+      "name": "Belgium",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "channels": ""
+  },
+  {
+    "date": "24-Aug-2025",
+    "time": "10:00 am",
+    "datetime": "August 24, 2025 10:00:00",
+    "type": "odi",
+    "team1": {
+      "name": "Australia",
+      "logo": "https://i.ibb.co/PZQGJzQ9/download-1.png"
+    },
+    "team2": {
+      "name": "South Africa",
+      "logo": "https://i.ibb.co/n8QtcvBm/download-4.png"
+    },
+    "channels": "willow/star sports 1 hd"
+  },
+  {
+    "date": "24-Aug-2025",
+    "time": "1:00 pm",
+    "datetime": "August 24, 2025 13:00:00",
+    "type": "t20",
+    "team1": {
+      "name": "Austria",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "team2": {
+      "name": "Qatar",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "channels": ""
+  },
+  {
+    "date": "24-Aug-2025",
+    "time": "3:30 pm",
+    "datetime": "August 24, 2025 15:30:00",
+    "type": "cwc",
+    "team1": {
+      "name": "Papua New Guinea",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "team2": {
+      "name": "Kuwait",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "channels": ""
+  },
+  {
+    "date": "24-Aug-2025",
+    "time": "3:30 pm",
+    "datetime": "August 24, 2025 15:30:00",
+    "type": "cwc",
+    "team1": {
+      "name": "Qatar",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "team2": {
+      "name": "Kenya",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "channels": ""
+  },
+  {
+    "date": "24-Aug-2025",
+    "time": "5:30 pm",
+    "datetime": "August 24, 2025 17:30:00",
+    "type": "t20",
+    "team1": {
+      "name": "Austria",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "team2": {
+      "name": "Belgium",
+      "logo": "https://i.ibb.co/yn3mKgC6/download-5.jpg"
+    },
+    "channels": ""
+  }
+    ]

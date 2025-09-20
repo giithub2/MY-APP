@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPL 2025 Full Schedule</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; background-color: black; margin: 0; padding: 0px; }
+    .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 15px; }
+    .match-card {
+      width: 100%; background: white; border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 6px; transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .match-card:hover { transform: scale(1.04); box-shadow: 0 5px 12px rgba(0,0,0,0.3); }
+    .team { display: flex; flex-direction: column; align-items: center; width: 85px; }
+    .team-logo { width: 40px; height: 40px; border-radius: 50%; background:#777C57; padding: 2px; }
+    .match-info { text-align: center; flex-grow: 1; }
+    .match-details { font-size: 12px; font-weight: bold; color: black; }
+    .channels { font-size: 12px; font-weight: bold; color: blue; margin: 2px 0; }
+    .countdown { font-size: 12px; font-weight: bold; color: #d9534f; margin-top: 2px; }
+    .live { font-size: 12px; font-weight: bold; color: white; background: red; padding: 2px 5px; border-radius: 4px; animation: blink 0.5s infinite alternate; }
+    @keyframes blink { from {opacity: 1;} to {opacity: 0;} }
+  </style>
+</head>
+<body>
+
+<div class="container" id="matches-container"></div>
+
+<script>
+async function loadMatches() {
+  const response = await fetch("/she/matches.json");
+  const matches = await response.json();
+  const container = document.getElementById("matches-container");
+
+  matches.forEach(match => {
+    const card = document.createElement("div");
+    card.className = "match-card";
+    card.setAttribute("data-match-time", match.datetime);
+    card.setAttribute("data-match-type", match.type);
+
+    card.innerHTML = `
+      <div class="team">
+        <img src="${match.team1.logo}" class="team-logo">
+        <p style="font-size:10px;font-weight:bold;color:green;">${match.team1.name}</p>
+      </div>
+      <div class="match-info">
+        <div class="match-details">
+          <p><strong>${match.date}</strong> | ${match.time}</p>
+          <p class="channels">${match.channels}</p>
+          <p class="countdown"></p>
+        </div>
+      </div>
+      <div class="team">
+        <img src="${match.team2.logo}" class="team-logo">
+        <p style="font-size:10px;font-weight:bold;color:green;">${match.team2.name}</p>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  updateCountdowns();
+}
+
+function updateCountdowns() {
+  const matchCards = document.querySelectorAll(".match-card");
+  matchCards.forEach(card => {
+    const matchTime = new Date(card.getAttribute("data-match-time")).getTime();
+    const now = new Date().getTime();
+    const timeLeft = matchTime - now;
+
+    const type = card.getAttribute("data-match-type");
+    let matchDuration = 4 * 60 * 60 * 1000; // default T20
+    if (type === "odi") matchDuration = 6 * 60 * 60 * 1000;
+    if (type === "test") matchDuration = 7 * 60 * 60 * 1000;
+
+    if (timeLeft > 0) {
+      const days = Math.floor(timeLeft / (1000*60*60*24));
+      const hours = Math.floor((timeLeft % (1000*60*60*24)) / (1000*60*60));
+      const minutes = Math.floor((timeLeft % (1000*60*60)) / (1000*60));
+      const seconds = Math.floor((timeLeft % (1000*60)) / 1000);
+      card.querySelector(".countdown").innerHTML = `Starts in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    } else if (timeLeft > -matchDuration) {
+      card.querySelector(".countdown").innerHTML = `<span class="live">LIVE NOW</span>`;
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
+setInterval(updateCountdowns, 1000);
+loadMatches();
+</script>
+
+</body>
+</html>

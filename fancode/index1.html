@@ -1,0 +1,29 @@
+<style>
+  .iframex {
+    position: relative;
+    width: 50px;
+  }
+
+  .iframey {
+    position: absolute;
+    top: -160px;
+    left: 10px;
+    width: 360px;
+    height: 2200px;
+    pointer-events: none; /* ✅ disables clicks, scrolls, keyboard inside iframe */
+  }
+</style>
+
+<div class="iframex">
+  <iframe 
+    class="iframey" 
+    sandbox="allow-forms" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen="" 
+    frameborder="0" 
+    src="https://www.live-cricketontv.com/stream/crichd/" 
+    scrolling="no" 
+    width="100%" 
+    height="100%">
+  </iframe>
+</div>
