@@ -109,3 +109,93 @@ document.write(`
           ]
         }
       }
+    ];
+
+    function padZero(n) { return n < 10 ? '0' + n : n; }
+    function getFormattedDate(date) {
+      return \`\${date.getFullYear()}-\${padZero(date.getMonth() + 1)}-\${padZero(date.getDate())}\`;
+    }
+    function getCurrentSchedule(schedules, now) {
+      if (!schedules || schedules.length === 0) return null;
+      for (let schedule of schedules) {
+        const start = new Date(now);
+        start.setHours(schedule.startHour, schedule.startMinute, 0, 0);
+        const end = new Date(now);
+        end.setHours(schedule.endHour, schedule.endMinute, 0, 0);
+        if (now >= start && now < end) { return schedule; }
+      }
+      return null;
+    }
+    function getNextSchedule(scheduleDates) {
+      const now = new Date();
+      const dateKeys = Object.keys(scheduleDates).sort();
+      const todayStr = getFormattedDate(now);
+      const todaySchedules = scheduleDates[todayStr];
+      if (todaySchedules) {
+        for (let schedule of todaySchedules) {
+          const startTime = new Date(now);
+          startTime.setHours(schedule.startHour, schedule.startMinute, 0, 0);
+          if (startTime > now) { return { startTime, ...schedule }; }
+        }
+      }
+      for (const dateStr of dateKeys) {
+        if (dateStr <= todayStr) continue;
+        const [year, month, day] = dateStr.split('-').map(Number);
+        const schedules = scheduleDates[dateStr];
+        if (schedules && schedules.length > 0) {
+          const firstSchedule = schedules[0];
+          const startTime = new Date(year, month - 1, day, firstSchedule.startHour, firstSchedule.startMinute, 0, 0);
+          return { startTime, ...firstSchedule };
+        }
+      }
+      return null;
+    }
+    function checkLiveStatus() {
+      const now = new Date();
+      const todayStr = getFormattedDate(now);
+      document.querySelectorAll('.card5').forEach((card, index) => {
+        const liveIndicator = card.querySelector('.live-indicator');
+        const countdownTimer = card.querySelector('.countdown-timer');
+        const customMessage = card.querySelector('.custom-message');
+        const cardImage = card.querySelector('img');
+        const schedule = timeRanges[index];
+        const schedulesToday = schedule?.dates[todayStr];
+        const currentSchedule = getCurrentSchedule(schedulesToday, now);
+        if (currentSchedule) {
+          liveIndicator.style.display = 'inline-block';
+          countdownTimer.style.display = 'none';
+          customMessage.textContent = currentSchedule.message;
+          customMessage.style.display = 'inline-block';
+          cardImage.src = currentSchedule.image;
+        } else {
+          liveIndicator.style.display = 'none';
+          const nextSchedule = getNextSchedule(schedule.dates);
+          if (nextSchedule) {
+            const diffSec = Math.floor((nextSchedule.startTime - now) / 1000);
+            const days = Math.floor(diffSec / (3600 * 24));
+            if (days > 0) {
+              countdownTimer.textContent = \`Live starts in \${days} day\${days > 1 ? 's' : ''}\`;
+            } else {
+              const h = Math.floor(diffSec / 3600);
+              const m = Math.floor((diffSec % 3600) / 60);
+              const s = diffSec % 60;
+              countdownTimer.textContent = \`Live starts in \${padZero(h)}:\${padZero(m)}:\${padZero(s)}\`;
+            }
+            countdownTimer.style.display = 'inline-block';
+            customMessage.textContent = nextSchedule.message;
+            customMessage.style.display = 'inline-block';
+            cardImage.src = nextSchedule.image;
+          } else {
+            countdownTimer.style.display = 'none';
+            customMessage.style.display = 'none';
+            cardImage.src = "https://i.ibb.co/20j5x3yS/IMG-20250916-062449-123.jpg";
+          }
+        }
+      });
+    }
+    setInterval(checkLiveStatus, 1000);
+    window.onload = checkLiveStatus;
+  <\/script>
+</body>
+</html>
+`);
