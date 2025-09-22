@@ -99,11 +99,11 @@ document.write(`
               image: "https://i.ibb.co/5XtFh3Dh/IMG-20250919-063115-517.jpg"
             }
           ],
-          "2025-09-19": [
+          "2025-09-23": [
             {
               startHour: 19, startMinute: 0, endHour: 23, endMinute: 0,
-              message: "🇮🇳 INDIA vs OMAN 🇴🇲",
-              image: "https://i.ibb.co/q32QTWFD/IMG-20250918-041447-197.jpg"
+              message: "🇵🇰Pakistan vs Sri Lanka🇱🇰",
+              image: "https://i.ibb.co/h1BckBh0/q-XYho-FCUpz-T.jpg"
             }
           ]
         }
