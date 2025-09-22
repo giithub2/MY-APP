@@ -73,11 +73,11 @@ document.write(`
       {
         match: "Fancode",
         dates: {
-          "2025-09-16": [
+          "2025-09-23": [
             {
               startHour: 19, startMinute: 0, endHour: 23, endMinute: 30,
-              message: "BAN vs AFG - Asia Cup",
-              image: "https://i.ibb.co/Cs6tdBQ3/IMG-20250916-050017-433.jpg"
+              message: "PAK v BAN - Asia Cup",
+              image: "https://i.ibb.co/h1BckBh0/q-XYho-FCUpz-T.jpg"
             },
             {
               startHour: 0, startMinute: 0, endHour: 0, endMinute: 0,
