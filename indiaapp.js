@@ -76,7 +76,7 @@ document.write(`
           "2025-09-23": [
             {
               startHour: 19, startMinute: 0, endHour: 23, endMinute: 30,
-              message: "PAK v BAN - Asia Cup",
+              message: "🇵🇰 PAK v BAN 🇧🇩",
               image: "https://i.ibb.co/h1BckBh0/q-XYho-FCUpz-T.jpg"
             },
             {
@@ -99,11 +99,11 @@ document.write(`
               image: "https://i.ibb.co/5XtFh3Dh/IMG-20250919-063115-517.jpg"
             }
           ],
-          "2025-09-23": [
+          "2025-09-24": [
             {
               startHour: 19, startMinute: 0, endHour: 23, endMinute: 0,
-              message: "🇵🇰Pakistan vs Sri Lanka🇱🇰",
-              image: "https://i.ibb.co/h1BckBh0/q-XYho-FCUpz-T.jpg"
+              message: "🇮🇳 IND vs BAN 🇧🇩",
+              image: "https://i.ibb.co/VWFqDTNP/qz-Mk-Gogh-KWf.jpg"
             }
           ]
         }
