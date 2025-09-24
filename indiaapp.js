@@ -58,7 +58,7 @@ document.write(`
 </head>
 <body>
   <div class="card5-container">
-    <a href="/aslsports/india.html">
+    <a href="https://indian-html.blogspot.com/?m=1">
       <div class="card5">
         <img src="https://i.ibb.co/20j5x3yS/IMG-20250916-062449-123.jpg" alt="Card Image" id="cardImage">
         <div class="custom-message"></div>
