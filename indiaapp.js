@@ -85,11 +85,11 @@ document.write(`
               image: "https://i.ibb.co/7tTNgZrF/IMG-20250916-052319-386.jpg"
             }
           ],
-          "2025-09-21": [
+          "2025-09-25": [
             {
-              startHour: 19, startMinute: 0, endHour: 23, endMinute: 30,
-              message: "Asia Cup",
-              image: "https://i.ibb.co/DP5rMNXc/t-LDRepjym-RD.jpg"
+              startHour: 19, startMinute: 0, endHour: 23, endMinute: 50,
+              message: "🇵🇰PAK vs BAN🇧🇩",
+              image: "https://i.ibb.co/39msq9tK/Uba-Lm-Chqw-HQ.jpg"
             }
           ],
           "2025-09-20": [
@@ -99,11 +99,11 @@ document.write(`
               image: "https://i.ibb.co/5XtFh3Dh/IMG-20250919-063115-517.jpg"
             }
           ],
-          "2025-09-24": [
+          "2025-09-26": [
             {
-              startHour: 19, startMinute: 0, endHour: 23, endMinute: 0,
-              message: "🇮🇳 IND vs BAN 🇧🇩",
-              image: "https://i.ibb.co/VWFqDTNP/qz-Mk-Gogh-KWf.jpg"
+              startHour: 19, startMinute: 0, endHour: 23, endMinute: 50,
+              message: "🇮🇳 IND vs SL 🇱🇰",
+              image: "https://i.ibb.co/SXy8cP3H/zi-RGx-ERn-GHw.jpg"
             }
           ]
         }
