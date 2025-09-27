@@ -99,10 +99,10 @@ document.write(`
               image: "https://i.ibb.co/5XtFh3Dh/IMG-20250919-063115-517.jpg"
             }
           ],
-          "2025-09-26": [
+          "2025-09-28": [
             {
               startHour: 19, startMinute: 0, endHour: 23, endMinute: 50,
-              message: "🇮🇳 IND vs SL 🇱🇰",
+              message: "🇮🇳 IND vs PAK 🇵🇰",
               image: "https://i.ibb.co/SXy8cP3H/zi-RGx-ERn-GHw.jpg"
             }
           ]
