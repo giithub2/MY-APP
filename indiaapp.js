@@ -102,8 +102,8 @@ document.write(`
           "2025-09-28": [
             {
               startHour: 19, startMinute: 0, endHour: 23, endMinute: 50,
-              message: "🇮🇳 IND vs PAK 🇵🇰",
-              image: "https://i.ibb.co/SXy8cP3H/zi-RGx-ERn-GHw.jpg"
+              message: "🇮🇳IND vs PAK🇵🇰-FINAL",
+              image: ""
             }
           ]
         }
