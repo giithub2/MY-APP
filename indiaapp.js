@@ -103,7 +103,7 @@ document.write(`
             {
               startHour: 19, startMinute: 0, endHour: 23, endMinute: 50,
               message: "🇮🇳IND vs PAK🇵🇰-FINAL",
-              image: ""
+              image: "https://i.ibb.co/1GTbm0rk/INDvsPAK.jpg"
             }
           ]
         }
