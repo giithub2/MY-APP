@@ -73,11 +73,11 @@ document.write(`
       {
         match: "Fancode",
         dates: {
-          "2025-09-23": [
+          "2025-09-30": [
             {
-              startHour: 19, startMinute: 0, endHour: 23, endMinute: 30,
-              message: "🇵🇰 PAK v BAN 🇧🇩",
-              image: "https://i.ibb.co/h1BckBh0/q-XYho-FCUpz-T.jpg"
+              startHour: 14, startMinute: 30, endHour: 22, endMinute: 30,
+              message: "World Cup - 2025",
+              image: "https://i.ibb.co/XcMTWr1/IMG-20250929-003224-539.jpg"
             },
             {
               startHour: 0, startMinute: 0, endHour: 0, endMinute: 0,
