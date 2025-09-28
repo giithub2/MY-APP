@@ -60,7 +60,7 @@ document.write(`
   <div class="card5-container">
     <a href="https://indian-html.blogspot.com/?m=1">
       <div class="card5">
-        <img src="https://i.ibb.co/20j5x3yS/IMG-20250916-062449-123.jpg" alt="Card Image" id="cardImage">
+        <img src="https://i.ibb.co/9kw8vRSx/IMG-20250929-004220-258.jpg" alt="Card Image" id="cardImage">
         <div class="custom-message"></div>
         <div class="live-indicator">Live Now</div>
         <div class="countdown-timer"></div>
@@ -187,7 +187,7 @@ document.write(`
           } else {
             countdownTimer.style.display = 'none';
             customMessage.style.display = 'none';
-            cardImage.src = "https://i.ibb.co/20j5x3yS/IMG-20250916-062449-123.jpg";
+            cardImage.src = "https://i.ibb.co/9kw8vRSx/IMG-20250929-004220-258.jpg";
           }
         }
       });
