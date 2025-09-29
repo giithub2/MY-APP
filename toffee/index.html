@@ -1,0 +1,53 @@
+
+
+
+
+
+
+
+</script> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>TV4WAP LIVE4WAP TOFFEE</title> 
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const streamId = urlParams.get('id');
+            
+            if (!streamId) return;
+            
+            fetch('https://tvgo.neocities.org/Json/toffee.txt')
+                .then(response => response.json())
+                .then(data => {
+                    const streamInfo = data.find(item => item.id === streamId);
+                    if (!streamInfo) return;
+                    
+                    const iframe = document.getElementById('stream-iframe');
+                    if (streamInfo.title) 
+                    {const key = encodeURIComponent(streamInfo.id); iframe.src=`https://my-app-demo1.vercel.app/toffee/plr17.html?url=https://allottplay.com/tv/toffee/live.php?id=${key}`;
+                    } else if (streamInfo.m3u8) {
+                        iframe.src = streamInfo.m3u8;
+                    }
+                });
+        });
+    </script> 
+ </head> 
+ <body style="position:absolute;margin: 0; padding: 0; height: 100%;width:100%;background:#000"> 
+  <iframe id="stream-iframe" style="width: 100%; height: 100%; border: none;" allow="autoplay; fullscreen" allowfullscreen></iframe> 
+ </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
