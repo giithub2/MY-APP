@@ -1,14 +1,9 @@
 #EXTM3U
 #EXT-X-VERSION:3
 
-# variant 1 (primary)
-#EXT-X-STREAM-INF:BANDWIDTH=2000000,RESOLUTION=1280x720,NAME="Link1"
+#EXT-X-STREAM-INF:BANDWIDTH=3000000
 https://live.dinesh29.com.np/stream/jiotvplus/starsports2hindi/master.m3u8
-
-# variant 2 (backup with same resolution & similar bandwidth)
-#EXT-X-STREAM-INF:BANDWIDTH=2000000,RESOLUTION=1280x720,NAME="Link2"
+#EXT-X-STREAM-INF:BANDWIDTH=2800000
 https://live.dinesh29.com.np/stream/jiotvplus/starsports2hindi/master.m3u8
-
-# optionally other bitrates
-#EXT-X-STREAM-INF:BANDWIDTH=2000000,RESOLUTION=1280x720,NAME="Link3"
+#EXT-X-STREAM-INF:BANDWIDTH=2400000
 https://live.dinesh29.com.np/stream/jiotvplus/starsports2hindi/master.m3u8
