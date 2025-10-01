@@ -60,7 +60,7 @@ document.write(`
   <div class="card5-container">
     <a href="https://ongoing-series.blogspot.com/?m=1">
       <div class="card5">
-        <img src="https://i.ibb.co/9kw8vRSx/IMG-20250929-004220-258.jpg" alt="Card Image" id="cardImage">
+        <img src="https://i.ibb.co/PGSd3fq9/Picsart-25-10-01-10-02-15-353.jpg" alt="Card Image" id="cardImage">
         <div class="custom-message"></div>
         <div class="live-indicator">Live Now</div>
         <div class="countdown-timer"></div>
@@ -187,7 +187,7 @@ document.write(`
           } else {
             countdownTimer.style.display = 'none';
             customMessage.style.display = 'none';
-            cardImage.src = "https://i.ibb.co/9kw8vRSx/IMG-20250929-004220-258.jpg";
+            cardImage.src = "https://i.ibb.co/PGSd3fq9/Picsart-25-10-01-10-02-15-353.jpg";
           }
         }
       });
