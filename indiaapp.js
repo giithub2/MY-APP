@@ -58,7 +58,7 @@ document.write(`
 </head>
 <body>
   <div class="card5-container">
-    <a href="https://ongoing-series.blogspot.com/?m=1">
+    <a href="https://indian-html.blogspot.com/?m=1">
       <div class="card5">
         <img src="https://i.ibb.co/PGSd3fq9/Picsart-25-10-01-10-02-15-353.jpg" alt="Card Image" id="cardImage">
         <div class="custom-message"></div>
