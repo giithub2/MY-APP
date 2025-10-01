@@ -77,7 +77,7 @@ document.write(`
             {
               startHour: 09, startMinute: 0, endHour: 16, endMinute: 30,
               message: "IND v WI-Day 1",
-              image: "https://i.ibb.co/PGSd3fq9/Picsart-25-10-01-10-02-15-353.jpg"
+              image: "https://pbs.twimg.com/media/G002tLQbAAEtKiV.jpg"
             },
             {
               startHour: 0, startMinute: 0, endHour: 0, endMinute: 0,
@@ -89,7 +89,7 @@ document.write(`
             {
               startHour: 19, startMinute: 0, endHour: 23, endMinute: 50,
               message: "IND v WI-Day 2",
-              image: "https://i.ibb.co/PGSd3fq9/Picsart-25-10-01-10-02-15-353.jpg"
+              image: "https://pbs.twimg.com/media/G002tLQbAAEtKiV.jpg"
             }
           ],
           "2025-09-20": [
