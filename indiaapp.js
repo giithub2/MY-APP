@@ -73,23 +73,23 @@ document.write(`
       {
         match: "Fancode",
         dates: {
-          "2025-09-30": [
+          "2025-10-02": [
             {
-              startHour: 14, startMinute: 30, endHour: 22, endMinute: 30,
-              message: "World Cup - 2025",
-              image: "https://i.ibb.co/XcMTWr1/IMG-20250929-003224-539.jpg"
+              startHour: 09, startMinute: 0, endHour: 16, endMinute: 30,
+              message: "IND v WI-Day 1",
+              image: "https://i.ibb.co/PGSd3fq9/Picsart-25-10-01-10-02-15-353.jpg"
             },
             {
               startHour: 0, startMinute: 0, endHour: 0, endMinute: 0,
-              message: "ASIA CUP - Match 10",
-              image: "https://i.ibb.co/7tTNgZrF/IMG-20250916-052319-386.jpg"
+              message: "IND v WI-Day 2",
+              image: "https://i.ibb.co/PGSd3fq9/Picsart-25-10-01-10-02-15-353.jpg"
             }
           ],
           "2025-09-25": [
             {
               startHour: 19, startMinute: 0, endHour: 23, endMinute: 50,
-              message: "🇵🇰PAK vs BAN🇧🇩",
-              image: "https://i.ibb.co/39msq9tK/Uba-Lm-Chqw-HQ.jpg"
+              message: "IND v WI-Day 2",
+              image: "https://i.ibb.co/PGSd3fq9/Picsart-25-10-01-10-02-15-353.jpg"
             }
           ],
           "2025-09-20": [
