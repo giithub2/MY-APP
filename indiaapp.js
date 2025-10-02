@@ -87,21 +87,21 @@ document.write(`
           ],
           "2025-10-03": [
             {
-              startHour: 19, startMinute: 0, endHour: 23, endMinute: 50,
+              startHour: 09, startMinute: 0, endHour: 16, endMinute: 50,
               message: "IND v WI-Day 2",
               image: "https://pbs.twimg.com/media/G002tLQbAAEtKiV.jpg"
             }
           ],
           "2025-10-04": [
             {
-              startHour: 19, startMinute: 0, endHour: 23, endMinute: 30,
+              startHour: 09, startMinute: 0, endHour: 16, endMinute: 30,
               message: "IND v WI-Day 3",
               image: "https://pbs.twimg.com/media/G002tLQbAAEtKiV.jpg"
             }
           ],
           "2025-10-05": [
             {
-              startHour: 19, startMinute: 0, endHour: 23, endMinute: 50,
+              startHour: 09, startMinute: 0, endHour: 16, endMinute: 50,
               message: "IND v WI-Day 4",
               image: "https://pbs.twimg.com/media/G002tLQbAAEtKiV.jpg"
             }
