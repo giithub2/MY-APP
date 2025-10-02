@@ -60,7 +60,7 @@ document.write(`
   <div class="card5-container">
     <a href="https://indian-html.blogspot.com/?m=1">
       <div class="card5">
-        <img src="https://i.ibb.co/PGSd3fq9/Picsart-25-10-01-10-02-15-353.jpg" alt="Card Image" id="cardImage">
+        <img src="https://pbs.twimg.com/media/G002tLQbAAEtKiV.jpg" alt="Card Image" id="cardImage">
         <div class="custom-message"></div>
         <div class="live-indicator">Live Now</div>
         <div class="countdown-timer"></div>
@@ -85,25 +85,25 @@ document.write(`
               image: "https://i.ibb.co/PGSd3fq9/Picsart-25-10-01-10-02-15-353.jpg"
             }
           ],
-          "2025-09-25": [
+          "2025-10-03": [
             {
               startHour: 19, startMinute: 0, endHour: 23, endMinute: 50,
               message: "IND v WI-Day 2",
               image: "https://pbs.twimg.com/media/G002tLQbAAEtKiV.jpg"
             }
           ],
-          "2025-09-20": [
+          "2025-10-04": [
             {
               startHour: 19, startMinute: 0, endHour: 23, endMinute: 30,
-              message: "Asia Cup",
-              image: "https://i.ibb.co/5XtFh3Dh/IMG-20250919-063115-517.jpg"
+              message: "IND v WI-Day 3",
+              image: "https://pbs.twimg.com/media/G002tLQbAAEtKiV.jpg"
             }
           ],
-          "2025-09-28": [
+          "2025-10-05": [
             {
               startHour: 19, startMinute: 0, endHour: 23, endMinute: 50,
-              message: "🇮🇳IND vs PAK🇵🇰-FINAL",
-              image: "https://i.ibb.co/1GTbm0rk/INDvsPAK.jpg"
+              message: "IND v WI-Day 4",
+              image: "https://pbs.twimg.com/media/G002tLQbAAEtKiV.jpg"
             }
           ]
         }
@@ -187,7 +187,7 @@ document.write(`
           } else {
             countdownTimer.style.display = 'none';
             customMessage.style.display = 'none';
-            cardImage.src = "https://i.ibb.co/PGSd3fq9/Picsart-25-10-01-10-02-15-353.jpg";
+            cardImage.src = "https://pbs.twimg.com/media/G002tLQbAAEtKiV.jpg";
           }
         }
       });
