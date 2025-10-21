@@ -89,14 +89,14 @@ document.write(`
             {
               startHour: 08, startMinute: 30, endHour: 16, endMinute: 00,
               message: "2nd ODI",
-              image: "https://i.ibb.co/gZD2ynZN/IMG-20251014-132528-162.jpg"
+              image: "https://i.ibb.co/fzC7X4vG/file-29297.jpg"
             }
           ],
           "2025-10-25": [
             {
               startHour: 08, startMinute: 30, endHour: 16, endMinute: 00,
               message: "3rd ODI",
-              image: "https://i.ibb.co/gZD2ynZN/IMG-20251014-132528-162.jpg"
+              image: "https://i.ibb.co/7tsS11LH/INDvAUS.jpg"
             }
           ],
           "2025-10-10": [
