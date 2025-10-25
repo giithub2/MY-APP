@@ -77,7 +77,7 @@ document.write(`
             {
               startHour: 13, startMinute: 00, endHour: 17, endMinute: 30,
               message: "1st T20i",
-              image: "https://www.livemint.com/lm-img/img/2025/09/22/600x338/PTI09-21-2025-000362A-0_1758530432537_1758530453770.jpg"
+              image: "https://i.ibb.co/LzCtSmxk/file-29353.jpg"
             },
             {
               startHour: 0, startMinute: 0, endHour: 0, endMinute: 0,
