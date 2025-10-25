@@ -1,6 +1,4 @@
-document.write(`
-
-      <!DOCTYPE html>
+document.write(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -19,38 +17,59 @@ document.write(`
     }
     .card5:hover { transform: translateY(-10px); }
     .card5 img {
-      width: 100%; height: auto;
+      width: 100%;
+      height: auto;
       transition: opacity 0.3s ease;
     }
     .card5:hover img { opacity: 0.8; }
     .card5-container {
-      display: flex; flex-direction: column;
-      align-items: center; margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
     }
     .live-indicator, .countdown-timer, .custom-message {
-      position: absolute; left: 50%; transform: translateX(-50%);
-      padding: 8px 24px; font-size: 22px; font-weight: bold;
-      border-radius: 5px; color: white; text-align: center;
-      width: 80%; box-sizing: border-box;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 24px;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 5px;
+      color: white;
+      text-align: center;
+      width: 80%;
+      box-sizing: border-box;
     }
     .live-indicator {
-      background-color: red; border: none;
-      animation: blink 1s infinite; display: none; bottom: 0px;
+      background-color: red;
+      border: none;
+      animation: blink 1s infinite;
+      display: none;
+      bottom: 0px;
     }
     .live-indicator:hover { background-color: darkred; }
     .countdown-timer {
       background-color: rgba(0, 0, 0, 0.6);
-      display: none; bottom: 0px;
+      display: none;
+      bottom: 0px;
     }
     .custom-message {
       background-color: rgba(0, 0, 0, 0.6);
-      display: none; bottom: 33px; font-size: 30px;
+      display: none;
+      bottom: 33px;
+      font-size: 30px;
     }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
     @media (max-width: 768px), (max-width: 480px) {
       .card5 { width: 98%; }
       .live-indicator, .countdown-timer, .custom-message {
-        font-size: 15px; padding: 6px 18px; width: 70%;
+        font-size: 15px;
+        padding: 6px 18px;
+        width: 70%;
       }
       .custom-message { font-size: 20px; color: white; }
     }
@@ -75,37 +94,17 @@ document.write(`
         match: "Fancode",
         dates: {
           "2025-10-29": [
-            {
-              startHour: 12, startMinute: 30, endHour: 17, endMinute: 30,
-              message: "1st T20i",
-              image: "https://i.ibb.co/LzCtSmxk/file-29353.jpg"
-            },
-            {
-              startHour: 0, startMinute: 0, endHour: 0, endMinute: 0,
-              message: "2nd ODI",
-              image: "&s=10"
-            }
+            { startHour: 12, startMinute: 30, endHour: 17, endMinute: 30, message: "1st T20i", image: "https://i.ibb.co/LzCtSmxk/file-29353.jpg" },
+            { startHour: 0, startMinute: 0, endHour: 0, endMinute: 0, message: "2nd ODI", image: "&s=10" }
           ],
           "2025-10-23": [
-            {
-              startHour: 08, startMinute: 30, endHour: 16, endMinute: 00,
-              message: "2nd ODI",
-              image: "https://i.ibb.co/fzC7X4vG/file-29297.jpg"
-            }
+            { startHour: 8, startMinute: 30, endHour: 16, endMinute: 0, message: "2nd ODI", image: "https://i.ibb.co/fzC7X4vG/file-29297.jpg" }
           ],
           "2025-10-24": [
-            {
-              startHour: 08, startMinute: 30, endHour: 16, endMinute: 00,
-              message: "3rd ODI",
-              image: "https://i.ibb.co/7tsS11LH/INDvAUS.jpg"
-            }
+            { startHour: 8, startMinute: 30, endHour: 16, endMinute: 0, message: "3rd ODI", image: "https://i.ibb.co/7tsS11LH/INDvAUS.jpg" }
           ],
           "2025-10-10": [
-            {
-              startHour: 09, startMinute: 0, endHour: 16, endMinute: 50,
-              message: "IND v WI-2nd Test",
-              image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ5s1dSBCw5JQ0Iixtz51G5YkeanPNA6iJzXNXYe2ALg&s=10"
-            }
+            { startHour: 9, startMinute: 0, endHour: 16, endMinute: 50, message: "IND v WI - 2nd Test", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ5s1dSBCw5JQ0Iixtz51G5YkeanPNA6iJzXNXYe2ALg&s=10" }
           ]
         }
       }
@@ -113,7 +112,7 @@ document.write(`
 
     function padZero(n) { return n < 10 ? '0' + n : n; }
     function getFormattedDate(date) {
-      return `${date.getFullYear()}-${padZero(date.getMonth() + 1)}-${padZero(date.getDate())}`;
+      return \`\${date.getFullYear()}-\${padZero(date.getMonth() + 1)}-\${padZero(date.getDate())}\`;
     }
     function getCurrentSchedule(schedules, now) {
       if (!schedules || schedules.length === 0) return null;
@@ -122,7 +121,7 @@ document.write(`
         start.setHours(schedule.startHour, schedule.startMinute, 0, 0);
         const end = new Date(now);
         end.setHours(schedule.endHour, schedule.endMinute, 0, 0);
-        if (now >= start && now < end) { return schedule; }
+        if (now >= start && now < end) return schedule;
       }
       return null;
     }
@@ -135,7 +134,7 @@ document.write(`
         for (let schedule of todaySchedules) {
           const startTime = new Date(now);
           startTime.setHours(schedule.startHour, schedule.startMinute, 0, 0);
-          if (startTime > now) { return { startTime, ...schedule }; }
+          if (startTime > now) return { startTime, ...schedule };
         }
       }
       for (const dateStr of dateKeys) {
@@ -176,8 +175,7 @@ document.write(`
             const hours = Math.floor((diffSec % (3600 * 24)) / 3600);
             const minutes = Math.floor((diffSec % 3600) / 60);
             const seconds = diffSec % 60;
-            
-            countdownTimer.textContent = `Live in: ${days}d ${padZero(hours)}h ${padZero(minutes)}m ${padZero(seconds)}s`;
+            countdownTimer.textContent = \`Live in: \${days}d \${padZero(hours)}h \${padZero(minutes)}m \${padZero(seconds)}s\`;
             countdownTimer.style.display = 'inline-block';
             customMessage.textContent = nextSchedule.message;
             customMessage.style.display = 'inline-block';
@@ -194,6 +192,4 @@ document.write(`
     window.onload = checkLiveStatus;
   </script>
 </body>
-</html>
-      
-`);
+</html>`);
