@@ -1,5 +1,6 @@
 document.write(`
-<!DOCTYPE html>
+
+      <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -75,7 +76,7 @@ document.write(`
         dates: {
           "2025-10-29": [
             {
-              startHour: 13, startMinute: 00, endHour: 17, endMinute: 30,
+              startHour: 12, startMinute: 30, endHour: 17, endMinute: 30,
               message: "1st T20i",
               image: "https://i.ibb.co/LzCtSmxk/file-29353.jpg"
             },
@@ -92,7 +93,7 @@ document.write(`
               image: "https://i.ibb.co/fzC7X4vG/file-29297.jpg"
             }
           ],
-          "2025-10-25": [
+          "2025-10-24": [
             {
               startHour: 08, startMinute: 30, endHour: 16, endMinute: 00,
               message: "3rd ODI",
@@ -112,7 +113,7 @@ document.write(`
 
     function padZero(n) { return n < 10 ? '0' + n : n; }
     function getFormattedDate(date) {
-      return \`\${date.getFullYear()}-\${padZero(date.getMonth() + 1)}-\${padZero(date.getDate())}\`;
+      return `${date.getFullYear()}-${padZero(date.getMonth() + 1)}-${padZero(date.getDate())}`;
     }
     function getCurrentSchedule(schedules, now) {
       if (!schedules || schedules.length === 0) return null;
@@ -172,14 +173,11 @@ document.write(`
           if (nextSchedule) {
             const diffSec = Math.floor((nextSchedule.startTime - now) / 1000);
             const days = Math.floor(diffSec / (3600 * 24));
-            if (days > 0) {
-              countdownTimer.textContent = \`Live starts in \${days} day\${days > 1 ? 's' : ''}\`;
-            } else {
-              const h = Math.floor(diffSec / 3600);
-              const m = Math.floor((diffSec % 3600) / 60);
-              const s = diffSec % 60;
-              countdownTimer.textContent = \`Live starts in \${padZero(h)}:\${padZero(m)}:\${padZero(s)}\`;
-            }
+            const hours = Math.floor((diffSec % (3600 * 24)) / 3600);
+            const minutes = Math.floor((diffSec % 3600) / 60);
+            const seconds = diffSec % 60;
+            
+            countdownTimer.textContent = `Live in: ${days}d ${padZero(hours)}h ${padZero(minutes)}m ${padZero(seconds)}s`;
             countdownTimer.style.display = 'inline-block';
             customMessage.textContent = nextSchedule.message;
             customMessage.style.display = 'inline-block';
@@ -194,7 +192,8 @@ document.write(`
     }
     setInterval(checkLiveStatus, 1000);
     window.onload = checkLiveStatus;
-  <\/script>
+  </script>
 </body>
 </html>
+      
 `);
