@@ -73,11 +73,11 @@ document.write(`
       {
         match: "Fancode",
         dates: {
-          "2025-10-19": [
+          "2025-10-29": [
             {
-              startHour: 08, startMinute: 30, endHour: 16, endMinute: 30,
-              message: "1st ODI",
-              image: "https://i.ibb.co/gZD2ynZN/IMG-20251014-132528-162.jpg"
+              startHour: 13, startMinute: 00, endHour: 17, endMinute: 30,
+              message: "1st T20i",
+              image: "https://www.livemint.com/lm-img/img/2025/09/22/600x338/PTI09-21-2025-000362A-0_1758530432537_1758530453770.jpg"
             },
             {
               startHour: 0, startMinute: 0, endHour: 0, endMinute: 0,
