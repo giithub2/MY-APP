@@ -80,7 +80,7 @@ document.write(`<!DOCTYPE html>
   <div class="card5-container">
     <a href="https://indian-html.blogspot.com/?m=1">
       <div class="card5">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3_L1HJ4x1FhjtgVTNWszj_ZxmkGy2vvjPbA&s" alt="Card Image" id="cardImage">
+        <img src="https://images.wondershare.com/filmora/article-images/css-loading-text-animation-1.gif" alt="Card Image" id="cardImage">
         <div class="custom-message"></div>
         <div class="live-indicator">Live Now</div>
         <div class="countdown-timer"></div>
