@@ -100,7 +100,7 @@ document.write(`<!DOCTYPE html>
       {
         match: "Fancode",
         dates: {
-          "2025-10-29": [
+          "2025-10-26": [
             { startHour: 10, startMinute: 30, endHour: 14, endMinute: 40, message: "World Cup - 2025", image: "https://i.ibb.co/p6gPdBZr/file-29359.jpg" },
             { startHour: 14, startMinute: 50, endHour: 18, endMinute: 0, message: "World Cup - 2025", image: "" }
           ],
