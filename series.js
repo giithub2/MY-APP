@@ -104,14 +104,14 @@ document.write(`<!DOCTYPE html>
             { startHour: 10, startMinute: 30, endHour: 14, endMinute: 40, message: "World Cup - 2025", image: "https://i.ibb.co/p6gPdBZr/file-29359.jpg" },
             { startHour: 14, startMinute: 50, endHour: 18, endMinute: 0, message: "World Cup - 2025", image: "https://img.cricketnmore.com/uploads/2025/10/india-women-vs-bangladesh-women-prediction-match-28-icc-womens-world-cup-2025-who-will-win-today-ind-w-vs-ban-w-match.jpg" }
           ],
-          "2025-10-23": [
+          "2025-10-29": [
             { startHour: 14, startMinute: 30, endHour: 21, endMinute: 0, message: "1st Simi Final", image: "https://i.ibb.co/gMS38L13/IMG-20251026-182033-912.jpg" }
           ],
-          "2025-10-24": [
+          "2025-10-30": [
             { startHour: 14, startMinute: 30, endHour: 21, endMinute: 0, message: "2nd Simi Final", image: "https://i.ibb.co/FqJQYMss/IMG-20251026-182028-735.jpg" }
           ],
-          "2025-10-10": [
-            { startHour: 9, startMinute: 0, endHour: 16, endMinute: 50, message: "IND v WI - 2nd Test", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ5s1dSBCw5JQ0Iixtz51G5YkeanPNA6iJzXNXYe2ALg&s=10" }
+          "2025-11-02": [
+            { startHour: 9, startMinute: 0, endHour: 16, endMinute: 50, message: "IND v WI - 2nd Test", image: "" }
           ]
         }
       }
