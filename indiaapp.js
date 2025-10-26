@@ -88,6 +88,8 @@ document.write(`<!DOCTYPE html>
     </a>
   </div>
 
+<div class="marquee"><div class="marquee__inner"><span>🔥 Link will Be updated during live match 🔥</span><span>🔥 Link will Be updated during live match 🔥</span></div></div><style>.marquee{overflow:hidden;white-space:nowrap;box-sizing:border-box;background:#0f172a;border-radius:10px;padding:8px 12px}.marquee__inner{display:inline-block;will-change:transform;animation:marquee 5s linear infinite}.marquee__inner span{display:inline-block;padding-right:50px;color:#fff;font-weight:600;font-size:16px}.marquee:hover .marquee__inner{animation-play-state:paused}@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>
+
   <script>
     const timeRanges = [
       {
