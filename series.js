@@ -111,7 +111,7 @@ document.write(`<!DOCTYPE html>
             { startHour: 14, startMinute: 30, endHour: 21, endMinute: 0, message: "2nd Simi Final", image: "https://i.ibb.co/FqJQYMss/IMG-20251026-182028-735.jpg" }
           ],
           "2025-11-02": [
-            { startHour: 9, startMinute: 0, endHour: 16, endMinute: 50, message: "IND v WI - 2nd Test", image: "" }
+            { startHour: 9, startMinute: 0, endHour: 16, endMinute: 50, message: "Final", image: "" }
           ]
         }
       }
