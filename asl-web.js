@@ -104,7 +104,7 @@ document.write(`<!DOCTYPE html>
 <body>
 
   <div class="livecard-container-1">
-    <a href="https://indian-html.blogspot.com/?m=1">
+    <a href="https://live-criicket.blogspot.com/">
       <div class="livecard-1">
         <img src="https://images.wondershare.com/filmora/article-images/css-loading-text-animation-1.gif"
              alt="Live Match Image"
