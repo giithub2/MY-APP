@@ -108,7 +108,7 @@ document.write(`<!DOCTYPE html>
             { startHour: 14, startMinute: 30, endHour: 21, endMinute: 0, message: "1st Semi Final", image: "https://i.ibb.co/MyTHMCKn/IMG-20251027-054042-720.jpg" }
           ],
           "2025-10-30": [
-            { startHour: 14, startMinute: 30, endHour: 21, endMinute: 0, message: "2nd Semi Final", image: "https://i.ibb.co/FqJQYMss/IMG-20251026-182028-735.jpg" }
+            { startHour: 14, startMinute: 30, endHour: 23, endMinute: 0, message: "2nd Semi Final", image: "https://i.ibb.co/FqJQYMss/IMG-20251026-182028-735.jpg" }
           ],
           "2025-11-02": [
             { startHour: 9, startMinute: 0, endHour: 16, endMinute: 50, message: "Final", image: "" }
