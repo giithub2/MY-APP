@@ -111,7 +111,7 @@ document.write(`<!DOCTYPE html>
             { startHour: 14, startMinute: 30, endHour: 23, endMinute: 0, message: "2nd Semi Final", image: "https://i.ibb.co/FqJQYMss/IMG-20251026-182028-735.jpg" }
           ],
           "2025-11-02": [
-            { startHour: 14, startMinute: 30, endHour: 23, endMinute: 50, message: "Final", image: "https://i.ibb.co/p6G4n6xd/IMG-20251031-051927-822.jpg" }
+            { startHour: 14, startMinute: 30, endHour: 23, endMinute: 50, message: "World Cup - Final", image: "https://i.ibb.co/p6G4n6xd/IMG-20251031-051927-822.jpg" }
           ]
         }
       }
