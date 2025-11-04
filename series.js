@@ -85,7 +85,9 @@ document.write(`<!DOCTYPE html>
 </head>
 <body>
   <div class="cardLive5-container">
-    <a href="https://ongoing-series.blogspot.com/?s=1">
+   <!----- <a href="https://ongoing-series.blogspot.com/?s=1"> <!------>
+   <!-----> <a href="https://me.webcric.com/frame2.htm"> <!------>
+   
       <div class="cardLive5">
         <img src="https://i.ibb.co/zhnWcXsf/file-29358.jpg" alt="Card Image" id="cardLive5Image">
         <div class="customMessage5"></div>
@@ -100,15 +102,15 @@ document.write(`<!DOCTYPE html>
       {
         match: "Fancode",
         dates: {
-          "2025-10-26": [
-            { startHour: 10, startMinute: 30, endHour: 14, endMinute: 40, message: "World Cup - 2025", image: "https://i.ibb.co/p6gPdBZr/file-29359.jpg" },
+          "2025-11-04": [
+            { startHour: 15, startMinute: 30, endHour: 22, endMinute: 40, message: "1st ODI", image: "https://i.ibb.co/gFQdLNCQ/IMG-20251104-072817-416.jpg" },
             { startHour: 14, startMinute: 50, endHour: 21, endMinute: 0, message: "World Cup - 2025", image: "https://img.cricketnmore.com/uploads/2025/10/india-women-vs-bangladesh-women-prediction-match-28-icc-womens-world-cup-2025-who-will-win-today-ind-w-vs-ban-w-match.jpg" }
           ],
-          "2025-10-29": [
-            { startHour: 14, startMinute: 30, endHour: 21, endMinute: 0, message: "1st Semi Final", image: "https://i.ibb.co/MyTHMCKn/IMG-20251027-054042-720.jpg" }
+          "2025-11-06": [
+            { startHour: 15, startMinute: 30, endHour: 22, endMinute: 30, message: "2nd ODI", image: "https://i.ibb.co/gFQdLNCQ/IMG-20251104-072817-416.jpg" }
           ],
-          "2025-10-30": [
-            { startHour: 14, startMinute: 30, endHour: 23, endMinute: 0, message: "2nd Semi Final", image: "https://i.ibb.co/FqJQYMss/IMG-20251026-182028-735.jpg" }
+          "2025-11-08": [
+            { startHour: 15, startMinute: 30, endHour: 22, endMinute: e0, message: "3rd ODI", image: "https://i.ibb.co/gFQdLNCQ/IMG-20251104-072817-416.jpg" }
           ],
           "2025-11-02": [
             { startHour: 14, startMinute: 30, endHour: 23, endMinute: 50, message: "World Cup - Final", image: "https://i.ibb.co/p6G4n6xd/IMG-20251031-051927-822.jpg" }
