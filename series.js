@@ -88,7 +88,7 @@ document.write(`<!DOCTYPE html>
    <!----- <a href="https://ongoing-series.blogspot.com/?s=1"> <!------>
    <!----- <a href="https://me.webcric.com/frame2.htm"> <!------>
    
-      <div class="cardLive5" onclick="playInNativePlayer('https://allottplay.com/tv/toffee/live.php?id=ten_cricket&e=.m3u8|Referer=https://allottplay.com/tv/toffee/live.php?id=ten_cricket&e=.m3u8')" >
+      <div class="cardLive5" onclick="playInNativePlayer('https://wo.cma.footballii.ir/hls2/solh.m3u8')" >
         <img src="https://images.wondershare.com/filmora/article-images/css-loading-text-animation-1.gif" alt="Card Image" id="cardLive5Image">
         <div class="customMessage5"></div>
         <div class="liveIndicator5">Live Now</div>
