@@ -86,9 +86,9 @@ document.write(`<!DOCTYPE html>
 <body>
   <div class="cardLive5-container">
    <!----- <a href="https://ongoing-series.blogspot.com/?s=1"> <!------>
-   <!-----> <a href="https://me.webcric.com/frame2.htm"> <!------>
+   <!----- <a href="https://me.webcric.com/frame2.htm"> <!------>
    
-      <div class="cardLive5">
+      <div class="cardLive5" onclick="playInNativePlayer('https://allottplay.com/tv/toffee/live.php?id=ten_cricket&e=.m3u8|Referer=https://allottplay.com/tv/toffee/live.php?id=ten_cricket&e=.m3u8')" >
         <img src="https://images.wondershare.com/filmora/article-images/css-loading-text-animation-1.gif" alt="Card Image" id="cardLive5Image">
         <div class="customMessage5"></div>
         <div class="liveIndicator5">Live Now</div>
@@ -200,5 +200,16 @@ document.write(`<!DOCTYPE html>
     setInterval(checkLiveStatus5, 1000);
     window.onload = checkLiveStatus5;
   </script>
+  
+  <script>
+    function playInNativePlayer(m3u8Url) {
+        if (window.AndroidInterface) {
+            window.AndroidInterface.playM3U8Video(m3u8Url);
+        } else {
+            alert("This Link is Only available in that App..");
+        }
+    }
+</script>
+
 </body>
 </html>`);
