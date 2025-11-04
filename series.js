@@ -110,7 +110,7 @@ document.write(`<!DOCTYPE html>
             { startHour: 15, startMinute: 30, endHour: 22, endMinute: 30, message: "2nd ODI", image: "https://i.ibb.co/gFQdLNCQ/IMG-20251104-072817-416.jpg" }
           ],
           "2025-11-08": [
-            { startHour: 15, startMinute: 30, endHour: 22, endMinute: e0, message: "3rd ODI", image: "https://i.ibb.co/gFQdLNCQ/IMG-20251104-072817-416.jpg" }
+            { startHour: 15, startMinute: 30, endHour: 22, endMinute: 30, message: "3rd ODI", image: "https://i.ibb.co/gFQdLNCQ/IMG-20251104-072817-416.jpg" }
           ],
           "2025-11-04": [
             { startHour: 15, startMinute: 30, endHour: 22, endMinute: 50, message: "1st ODI", image: "https://i.ibb.co/gFQdLNCQ/IMG-20251104-072817-416.jpg" }
