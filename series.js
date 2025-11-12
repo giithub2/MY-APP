@@ -192,7 +192,7 @@ document.write(`<!DOCTYPE html>
           } else {
             countdownTimer.style.display = 'none';
             customMessage.style.display = 'none';
-            cardImage.src = "https://i.ibb.co/zhnWcXsf/file-29358.jpg";
+            cardImage.src = "https://i.ibb.co/57BPrPF/Picsart-25-11-11-19-17-42-632.jpg";
           }
         }
       });
