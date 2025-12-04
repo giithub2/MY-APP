@@ -85,10 +85,10 @@ document.write(`<!DOCTYPE html>
 </head>
 <body>
   <div class="cardLive5-container">
-   <!----- <a href="https://ongoing-series.blogspot.com/?s=1"> <!------>
-   <!-----> <a href="https://tnt-live-sports.blogspot.com/?m=1"> <!------>
-   
-           <img src="https://images.wondershare.com/filmora/article-images/css-loading-text-animation-1.gif" alt="Card Image" id="cardLive5Image">
+    <!---<a href="https://ongoing-series.blogspot.com/?s=1"><!----->
+    <!-----><a href="https://tnt-live-sports.blogspot.com/?m=1"><!----->
+      <div class="cardLive5">
+        <img src="https://images.wondershare.com/filmora/article-images/css-loading-text-animation-1.gif" alt="Card Image" id="cardLive5Image">
         <div class="customMessage5"></div>
         <div class="liveIndicator5">Live Now</div>
         <div class="countdownTimer5"></div>
@@ -102,17 +102,20 @@ document.write(`<!DOCTYPE html>
         match: "Fancode",
         dates: {
           "2025-12-04": [
-            { startHour: 09, startMinute: 30, endHour: 16, endMinute: 40, message: "2nd Test - Day 1", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" },
-            { startHour: 14, startMinute: 50, endHour: 21, endMinute: 0, message: "World Cup - 2025", image: "https://img.cricketnmore.com/uploads/2025/10/india-women-vs-bangladesh-women-prediction-match-28-icc-womens-world-cup-2025-who-will-win-today-ind-w-vs-ban-w-match.jpg" }
+            { startHour: 09, startMinute: 30, endHour: 16, endMinute: 40, message: "2nd Test- Day 1", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" },
+            { startHour: 0, startMinute: 0, endHour: 0, endMinute: 0, message: "World Cup - 2025", image: "https://img.cricketnmore.com/uploads/2025/10/india-women-vs-bangladesh-women-prediction-match-28-icc-womens-world-cup-2025-who-will-win-today-ind-w-vs-ban-w-match.jpg" }
           ],
           "2025-12-05": [
-            { startHour: 09, startMinute: 30, endHour: 16, endMinute: 30, message: "2nd Test - Day 2", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" }
+            { startHour: 09, startMinute: 30, endHour: 16, endMinute: 0, message: "2nd Test- Day 2", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" }
           ],
           "2025-12-06": [
-            { startHour: 09, startMinute: 30, endHour: 16, endMinute: 30, message: "2nd Test - Day 3", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" }
+            { startHour: 09, startMinute: 30, endHour: 16, endMinute: 0, message: "2nd Test- Day 3", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" }
           ],
           "2025-12-07": [
-            { startHour: 09, startMinute: 30, endHour: 16, endMinute: 50, message: "2nd Test - Day 4", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" }
+            { startHour: 09, startMinute: 30, endHour: 16, endMinute: 0, message: "2nd Test- Day 4", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" }
+          ],
+          "2025-12-08": [
+            { startHour: 09, startMinute: 30, endHour: 16, endMinute: 50, message: "2nd Test- Day 5", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" }
           ]
         }
       }
@@ -191,7 +194,7 @@ document.write(`<!DOCTYPE html>
           } else {
             countdownTimer.style.display = 'none';
             customMessage.style.display = 'none';
-            cardImage.src = "https://i.ibb.co/57BPrPF/Picsart-25-11-11-19-17-42-632.jpg";
+            cardImage.src = "https://i.ibb.co/zhnWcXsf/file-29358.jpg";
           }
         }
       });
@@ -199,16 +202,5 @@ document.write(`<!DOCTYPE html>
     setInterval(checkLiveStatus5, 1000);
     window.onload = checkLiveStatus5;
   </script>
-  
-  <script>
-    function playInNativePlayer(m3u8Url) {
-        if (window.AndroidInterface) {
-            window.AndroidInterface.playM3U8Video(m3u8Url);
-        } else {
-            alert("This Link is Only available in that App..");
-        }
-    }
-</script>
-
 </body>
 </html>`);
