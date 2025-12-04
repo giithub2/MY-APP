@@ -86,10 +86,9 @@ document.write(`<!DOCTYPE html>
 <body>
   <div class="cardLive5-container">
    <!----- <a href="https://ongoing-series.blogspot.com/?s=1"> <!------>
-   <!-----> <div><a href="https://tnt-live-sports.blogspot.com/?m=1"> <!------>
+   <!-----> <a href="https://tnt-live-sports.blogspot.com/?m=1"> <!------>
    
-   <!-----  <div class="cardLive5" onclick="playInNativePlayer('https://wo.cma.footballii.ir/hls2/solh.m3u8')" ><!---->
-        <img src="https://images.wondershare.com/filmora/article-images/css-loading-text-animation-1.gif" alt="Card Image" id="cardLive5Image">
+           <img src="https://images.wondershare.com/filmora/article-images/css-loading-text-animation-1.gif" alt="Card Image" id="cardLive5Image">
         <div class="customMessage5"></div>
         <div class="liveIndicator5">Live Now</div>
         <div class="countdownTimer5"></div>
