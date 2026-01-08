@@ -101,21 +101,21 @@ document.write(`<!DOCTYPE html>
       {
         match: "Fancode",
         dates: {
-          "2026-01-04": [
-            { startHour: 05, startMinute: 0, endHour: 12, endMinute: 40, message: "5th Test- Day 1", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" },
+          "2026-01-09": [
+            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 40, message: "WPL - 2026", image: "https://i.ibb.co/GFjTv4D/bixfy.jpg" },
             { startHour: 0, startMinute: 0, endHour: 0, endMinute: 0, message: "World Cup - 2025", image: "https://img.cricketnmore.com/uploads/2025/10/india-women-vs-bangladesh-women-prediction-match-28-icc-womens-world-cup-2025-who-will-win-today-ind-w-vs-ban-w-match.jpg" }
           ],
-          "2026-01-05": [
-            { startHour: 05, startMinute: 0, endHour: 12, endMinute: 30, message: "5th Test- Day 2", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" }
+          "2026-01-10": [
+            { startHour: 15, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/GFjTv4D/bixfy.jpg" }
           ],
-          "2026-01-06": [
-            { startHour: 05, startMinute: 0, endHour: 12, endMinute: 30, message: "5th Test- Day 3", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" }
+          "2026-01-11": [
+            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/GFjTv4D/bixfy.jpg" }
           ],
-          "2026-01-07": [
-            { startHour: 05, startMinute: 0, endHour: 12, endMinute: 30, message: "5th Test- Day 4", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" }
+          "2026-01-12": [
+            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/GFjTv4D/bixfy.jpg" }
           ],
-          "2026-01-08": [
-            { startHour: 05, startMinute: 0, endHour: 16, endMinute: 30, message: "5th Test- Day 5", image: "https://crickettimes.com/wp-content/uploads/2023/06/Ashes-2023-Broadcast-and-Live-Streaming-details.jpg" }
+          "2026-01-13": [
+            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/GFjTv4D/bixfy.jpg" }
           ]
         }
       }
@@ -194,7 +194,7 @@ document.write(`<!DOCTYPE html>
           } else {
             countdownTimer.style.display = 'none';
             customMessage.style.display = 'none';
-            cardImage.src = "https://i.ibb.co/zhnWcXsf/file-29358.jpg";
+            cardImage.src = "https://images.wondershare.com/filmora/article-images/css-loading-text-animation-1.gif";
           }
         }
       });
