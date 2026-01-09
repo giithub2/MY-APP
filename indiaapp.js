@@ -95,14 +95,14 @@ document.write(`<!DOCTYPE html>
         match: "Fancode",
         dates: {
           "2026-01-11": [
-            { startHour: 13, startMinute: 00, endHour: 23, endMinute: 0, message: "1st ODI", image: "https://i.ibb.co/tMTcrbBP/file-29691.jpg" },
+            { startHour: 13, startMinute: 00, endHour: 23, endMinute: 0, message: "1st ODI", image: "https://indiantvinfo.com/media/2026/01/India-Vs-New-Zealand-2026.jpg" },
             { startHour: 0, startMinute: 0, endHour: 0, endMinute: 0, message: "2nd ODI", image: "&s=10" }
           ],
-          "2025-12-11": [
-            { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "2nd T20i", image: "https://i.ibb.co/MDC98gWN/IMG-20251208-060808-325.jpg" }
+          "2026-01-14": [
+            { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "2nd ODI", image: "https://indiantvinfo.com/media/2026/01/India-Vs-New-Zealand-2026.jpg" }
           ],
-          "2025-12-14": [
-            { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "3rd T20i", image: "https://i.ibb.co/MDC98gWN/IMG-20251208-060808-325.jpg" }
+          "2026-01-18": [
+            { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "3rd ODI", image: "https://indiantvinfo.com/media/2026/01/India-Vs-New-Zealand-2026.jpg" }
           ],
           "2025-12-17": [
             { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "4th T20i", image: "https://i.ibb.co/MDC98gWN/IMG-20251208-060808-325.jpg" }
