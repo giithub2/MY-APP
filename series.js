@@ -106,7 +106,7 @@ document.write(`<!DOCTYPE html>
             { startHour: 19, startMinute: 20, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://www.jagranimages.com/images/2026/01/09/article/image/MI-W-vs-DC-W-Live-Streaming-1767957653012.webp" }
           ],
           "2026-01-11": [
-            { startHour: 15, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://img.cricketnmore.com/uploads/2026/01/delhi-capitals-women-vs-gujarat-giants-women-match-4-wpl-2026-who-will-win-today-dc-w-vs-gg-w-match.jpg" }
+            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://img.cricketnmore.com/uploads/2026/01/delhi-capitals-women-vs-gujarat-giants-women-match-4-wpl-2026-who-will-win-today-dc-w-vs-gg-w-match.jpg" }
           ],
           "2026-01-12": [
             { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/Rp2Crhkt/Picsart-26-01-08-05-06-12-169.jpg" }
