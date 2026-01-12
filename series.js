@@ -85,8 +85,8 @@ document.write(`<!DOCTYPE html>
 </head>
 <body>
   <div class="cardLive5-container">
-    <!---<a href="https://ongoing-series.blogspot.com/?s=1"><!----->
-    <!-----><a href="https://reelswipe.blogspot.com/?m=1"><!----->
+    <!---><a href="https://ongoing-series.blogspot.com/?s=1"><!----->
+    <!-----<a href="https://reelswipe.blogspot.com/?m=1"><!----->
       <div class="cardLive5">
         <img src="https://images.wondershare.com/filmora/article-images/css-loading-text-animation-1.gif" alt="Card Image" id="cardLive5Image">
         <div class="customMessage5"></div>
