@@ -109,7 +109,7 @@ document.write(`<!DOCTYPE html>
             { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://img.cricketnmore.com/uploads/2026/01/delhi-capitals-women-vs-gujarat-giants-women-match-4-wpl-2026-who-will-win-today-dc-w-vs-gg-w-match.jpg" }
           ],
           "2026-01-12": [
-            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/Rp2Crhkt/Picsart-26-01-08-05-06-12-169.jpg" }
+            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/JR8KbRsZ/IMG-20260112-062737-946.jpg" }
           ],
           "2026-01-13": [
             { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/Rp2Crhkt/Picsart-26-01-08-05-06-12-169.jpg" }
