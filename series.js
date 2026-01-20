@@ -112,7 +112,7 @@ document.write(`<!DOCTYPE html>
             { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/nNN8pmMb/IMG-20260118-055454-173.jpg" }
           ],
           "2026-01-20": [
-            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/spDYX0jt/IMG-20260113-040202-939.jpg" }
+            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/qSK62yq/IMG-20260120-072310-631.jpg" }
           ],
           "2026-01-21": [
             { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/Rp2Crhkt/Picsart-26-01-08-05-06-12-169.jpg" }
