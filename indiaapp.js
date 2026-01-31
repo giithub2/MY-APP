@@ -94,9 +94,9 @@ document.write(`<!DOCTYPE html>
       {
         match: "Fancode",
         dates: {
-          "2026-01-21": [
-            { startHour: 19, startMinute: 00, endHour: 23, endMinute: 0, message: "1st T20i", image: "https://i.ibb.co/QvBDYrvb/IMG-20260121-033723-733.jpg" },
-            { startHour: 0, startMinute: 0, endHour: 0, endMinute: 0, message: "2nd ODI", image: "&s=10" }
+          "2026-02-07": [
+            { startHour: 10, startMinute: 30, endHour: 19, endMinute: 0, message: "World Cup - 2026", image: "https://i.ibb.co/9mq2DNNb/IMG-20260131-081400-651.jpg" },
+            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "&s=10" }
           ],
           "2026-01-23": [
             { startHour: 19, startMinute: 0, endHour: 23, endMinute: 0, message: "2nd T20i", image: "https://i.ibb.co/QvBDYrvb/IMG-20260121-033723-733.jpg" }
