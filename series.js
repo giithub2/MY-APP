@@ -109,7 +109,7 @@ document.write(`<!DOCTYPE html>
             { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "DC vs GG (Playoff)", image: "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/9583/1768114799583-i" }
           ],
           "2026-02-05": [
-            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026 (Final)", image: "https://i.ibb.co/bMbkg7FT/IMG-20260121-053520-408.jpg" }
+            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026 (Final)", image: "https://i.ibb.co/TBbQj296/1770227383293.png" }
           ],
           "2026-01-29": [
             { startHour: 19, startMinute: 0, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/bMbkg7FT/IMG-20260121-053520-408.jpg" }
