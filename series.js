@@ -102,7 +102,7 @@ document.write(`<!DOCTYPE html>
         match: "Fancode",
         dates: {
           "2026-02-06": [
-            { startHour: 13, startMinute: 0, endHour: 19, endMinute: 20, message: "WPL - 2026", image: "https://i.ibb.co/gLLMrKwW/IMG-20260206-125535-889.jpg" },
+            { startHour: 13, startMinute: 0, endHour: 19, endMinute: 20, message: "U19 2026 (Final)", image: "https://i.ibb.co/gLLMrKwW/IMG-20260206-125535-889.jpg" },
             { startHour: 19, startMinute: 20, endHour: 23, endMinute: 30, message: "WPL - 2026", image: "https://i.ibb.co/dJK4DZ1M/IMG-20260117-090939-002.jpg" }
           ],
           "2026-02-03": [
