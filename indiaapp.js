@@ -95,7 +95,7 @@ document.write(`<!DOCTYPE html>
         match: "Fancode",
         dates: {
           "2026-02-07": [
-            { startHour: 10, startMinute: 30, endHour: 19, endMinute: 0, message: "World Cup - 2026", image: "https://i.ibb.co/s9VW5XSZ/Screenshot-2026-02-06-18-15-51-558-com-example-vpnwebapp.png" },
+            { startHour: 10, startMinute: 30, endHour: 19, endMinute: 0, message: "World Cup - 2026", image: "https://indiantvinfo.com/media/2026/02/Ind-Vs-USA.jpg" },
             { startHour: 19, startMinute: 0, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "&s=10" }
           ],
           "2026-02-08": [
