@@ -94,21 +94,21 @@ document.write(`<!DOCTYPE html>
       {
         match: "Fancode",
         dates: {
-          "2026-02-08": [
-            { startHour: 19, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://img10.hotstar.com/image/upload/f_auto,q_90,w_640/sources/r1/cms/prod/2487/1770548122487-h" },
+          "2026-02-09": [
+            { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" },
             { startHour: 0, startMinute: 0, endHour: 0, endMinute: 0, message: "World Cup - 2026", image: "&s=10" }
           ],
-          "2026-02-07": [
-            { startHour: 10, startMinute: 0, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://indiantvinfo.com/media/2026/02/Ind-Vs-USA.jpg" }
+          "2026-02-10": [
+            { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" }
           ],
-          "2026-01-25": [
-            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 0, message: "3rd T20i", image: "https://i.ibb.co/QvBDYrvb/IMG-20260121-033723-733.jpg" }
+          "2026-02-11": [
+            { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" }
           ],
-          "2026-01-28": [
-            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 0, message: "4th T20i", image: "https://i.ibb.co/QvBDYrvb/IMG-20260121-033723-733.jpg" }
+          "2026-02-12": [
+            { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" }
           ],
-          "2026-01-31": [
-            { startHour: 19, startMinute: 0, endHour: 23, endMinute: 0, message: "5th T20i", image: "https://i.ibb.co/QvBDYrvb/IMG-20260121-033723-733.jpg" }
+          "2026-02-13": [
+            { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://i.ibb.co/QvBDYrvb/IMG-20260121-033723-733.jpg" }
           ]
         }
       }
