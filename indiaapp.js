@@ -107,8 +107,8 @@ document.write(`<!DOCTYPE html>
           "2026-02-13": [
             { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" }
           ],
-          "2026-02-13": [
-            { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://i.ibb.co/QvBDYrvb/IMG-20260121-033723-733.jpg" }
+          "2026-02-14": [
+            { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" }
           ]
         }
       }
