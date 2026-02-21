@@ -94,12 +94,12 @@ document.write(`<!DOCTYPE html>
       {
         match: "Fancode",
         dates: {
-          "2026-02-18": [
-            { startHour: 10, startMinute: 30, endHour: 18, endMinute: 15, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" },
-            { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://vault.pictures/media/images/9e/fb/a4/9efba47102be4df68159b2496efe9e20.jpg" }
+          "2026-02-22": [
+            { startHour: 14, startMinute: 30, endHour: 18, endMinute: 15, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" },
+            { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://ssl.gstatic.com/onebox/media/sports/videos/vita/oMisWfMsbGL9s0jw_768x432.jpg" }
           ],
-          "2026-02-19": [
-            { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" }
+          "2026-02-21": [
+            { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://ssl.gstatic.com/onebox/media/sports/videos/vita/FuElAZ1vIevU7F18_768x432.jpg" }
           ],
           "2026-02-17": [
             { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" }
@@ -107,7 +107,7 @@ document.write(`<!DOCTYPE html>
           "2026-02-20": [
             { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" }
           ],
-          "2026-02-21": [
+          "2026-02-09": [
             { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" }
           ]
         }
