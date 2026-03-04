@@ -98,11 +98,11 @@ document.write(`<!DOCTYPE html>
             { startHour: 14, startMinute: 30, endHour: 18, endMinute: 15, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" },
             { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://ssl.gstatic.com/onebox/media/sports/videos/vita/oMisWfMsbGL9s0jw_768x432.jpg" }
           ],
-          "2026-02-21": [
-            { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://ssl.gstatic.com/onebox/media/sports/videos/vita/FuElAZ1vIevU7F18_768x432.jpg" }
+          "2026-03-04": [
+            { startHour: 10, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://vault.pictures/media/images/25/05/17/2505176e783f4d6caa6e7fcd2d72057f.jpg" }
           ],
-          "2026-02-23": [
-            { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" }
+          "2026-03-05": [
+            { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://vault.pictures/media/images/42/8a/4f/428a4f236aed4220ad260be767c32174.jpg" }
           ],
           "2026-02-24": [
             { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://images.financialexpressdigital.com/2026/02/icc-mens-t20-world-cup-2026-opening-ceremony.jpg?quality=100&w=1200" }
