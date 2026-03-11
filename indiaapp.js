@@ -99,7 +99,7 @@ document.write(`<!DOCTYPE html>
             { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://ssl.gstatic.com/onebox/media/sports/videos/vita/oMisWfMsbGL9s0jw_768x432.jpg" }
           ],
           "2026-03-28": [
-            { startHour: 18, startMinute: 0, endHour: 23, endMinute: 0, message: "RCB vs SRH | IPL2026 |", image: "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/7607/1747928747607-i" }
+            { startHour: 18, startMinute: 0, endHour: 23, endMinute: 0, message: "RCB v SRH | IPL(2026)", image: "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/7607/1747928747607-i" }
           ],
           "2026-03-05": [
             { startHour: 18, startMinute: 30, endHour: 23, endMinute: 0, message: "World Cup - 2026", image: "https://vault.pictures/media/images/42/8a/4f/428a4f236aed4220ad260be767c32174.jpg" }
